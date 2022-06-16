@@ -9,12 +9,18 @@ public class Spiel {
     ArrayList<Character> fehlversuche = new ArrayList<Character>();  //Buchstaben aus falschen Rateversuchen
     Character[] erraten;  //erratene Indizes
 
+    Nutzer spieler1;
+    Nutzer spieler2;
 
 
-    public Spiel(String wort){
+
+    public Spiel(String wort, Nutzer spieler1, Nutzer spieler2){
         this.geheimesWort = wort;
         this.erraten = new Character[geheimesWort.length()];
         Arrays.fill(erraten,  "0".charAt(0));  //alle Felder mit "0" ausfüllen
+        this.spieler1 = spieler1;
+        this.spieler2 = spieler2;
+
     }
 
     public String getFehlversuche(){
@@ -43,6 +49,10 @@ public class Spiel {
         }
         fehlversuche.add(buchstabe);
         return false;
+    }
+
+    public String toString(){
+        return "Spiel: " + geheimesWort + " Spieler 1: " + spieler1 + " Spieler 2: "+ spieler2;
     }
 
 }
