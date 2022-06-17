@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import static org.example.Main.nutzerListe;
 import static org.example.Main.warteraum;
 
-public class Nutzer{
+public class Nutzer implements INutzer{
 
 
     String name;
@@ -17,9 +17,9 @@ public class Nutzer{
     Spiel spielAktuell;
 
     //parameterloser Konstruktor
-    public Nutzer(String name){
+    public Nutzer(String name, String passwort){
         this.name = name;
-        //this.passwort = passwort;
+        this.passwort = passwort;
         this.punkte = 0;
         Main.nutzerListe.add(this);
     }
