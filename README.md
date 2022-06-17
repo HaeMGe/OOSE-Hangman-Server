@@ -6,6 +6,33 @@ Luisa Victor
 
 Projektbeschreibung:
 
+Spielregeln:
+
+- Zu einem Spiel gehören 2 Spieler 
+- je nach gewähltem Schwierigkeitsgrad hat jeder Spieler ein bestimmte Anzahl an Leben:
+   --> Level 1: 20 Leben
+   --> Level 2: 15 Leben
+   --> Level 3: 10 Leben
+   --> Level 4: 5 Leben
+
+   --> ein Sieg bringt jedem Spieler Punkte:
+     --> Level 1: 5 Punkte
+     --> Level 2: 10 Punkte
+     --> Level 3: 15 Punkte
+     --> Level 4: 20 Punkte
+
+- die Punkte werden für jeden Nutzer gespeichert und nach jedem Spiel aufaddiert
+
+
+
+?????????????????????????????????????????????????????
+- Ablauf des Spiels: 
+  --> es können nur 2 Spieler mit gleich gewähltem Schwierigkeitsgrad gegeneinander spielen
+  --> jeder der beiden Spieler gibt ein Wort ein, das der Gegner erraten muss mit maximal n (z.B. 10) Buchstaben
+  --> jeder Spieler erhält die Anzahl der zu erratenen Buchstaben
+  --> beide Spieler erraten parallel das jeweilige Wort 
+  --> der Spieler, der sein Wort errät und noch am meisten Leben hat gewinnt und kriegt die Punkte, der andere kriegt keine Punkte
+  --> wenn beide verlieren (alle Leben verbraucht) kriegt niemand Punkte
 
 
 Verwendete Features:
