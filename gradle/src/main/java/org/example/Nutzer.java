@@ -61,13 +61,13 @@ public class Nutzer implements INutzer{
             }
         }
         if(Main.warteraum.get(0) == this){    //ist erste oder zweite Person der Nutzer im Warteraum?
-            Spiel neuesSpiel = new Spiel("hier muss ein Wort hin", this, warteraum.get(1));
+            Spiel neuesSpiel = new Spiel("hier muss ein Wort hin", "hier muss 2. Wort hin",  this, warteraum.get(1));
             this.spielAktuell = neuesSpiel;
             warteraum.get(1).spielAktuell = neuesSpiel;
             return "Dein Gegner: " + warteraum.get(1);   //Gegner zurückliefern
         }
         else {
-            Spiel neuesSpiel = new Spiel("hier muss ein Wort hin", this, warteraum.get(0));
+            Spiel neuesSpiel = new Spiel("hier muss ein Wort hin", "hier kommt zweites Wort hin",this, warteraum.get(0));
             this.spielAktuell = neuesSpiel;
             warteraum.get(0).spielAktuell = neuesSpiel;
             return "Dein Gegner: " + warteraum.get(0);

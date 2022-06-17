@@ -25,7 +25,6 @@ class MainTest {
         System.out.println(spiel);
         assertEquals(spiel, nutzer2.spielAktuell);  //wurde beiden Spielern dasselbe Spiel zugeordnet?
 
-
     }
 
 }
