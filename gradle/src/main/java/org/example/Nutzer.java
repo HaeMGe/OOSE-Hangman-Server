@@ -17,9 +17,9 @@ public class Nutzer{
     Spiel spielAktuell;
 
     //parameterloser Konstruktor
-    public Nutzer(String name, String passwort){
+    public Nutzer(String name){
         this.name = name;
-        this.passwort = passwort;
+        //this.passwort = passwort;
         this.punkte = 0;
         Main.nutzerListe.add(this);
     }

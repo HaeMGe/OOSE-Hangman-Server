@@ -14,6 +14,8 @@ public class Main {
         post("/games/hangman/start", (q, a) -> "{ Herzlich Willkommen vom Server! }");
         post("/games/hangman/start/neuesWort", (q, a) -> "{ Wort angekommen! }");
 
+        post("/games/hangman/start/lobby",(q, a)-> LogikIntern.lobby(q.body()));
+
        // get("/games/hangman/start/loesen","application/json", ((request, response) -> {
           //  response.type("application/json");
 
