@@ -6,6 +6,33 @@ Luisa Victor
 
 Projektbeschreibung:
 
+Spielregeln:
+
+- Zu einem Spiel gehören 2 Spieler 
+- je nach gewähltem Schwierigkeitsgrad hat jeder Spieler ein bestimmte Anzahl an Leben:
+   --> Level 1: 20 Leben
+   --> Level 2: 15 Leben
+   --> Level 3: 10 Leben
+   --> Level 4: 5 Leben
+
+   --> ein Sieg bringt jedem Spieler Punkte:
+     --> Level 1: 5 Punkte
+     --> Level 2: 10 Punkte
+     --> Level 3: 15 Punkte
+     --> Level 4: 20 Punkte
+
+- die Punkte werden für jeden Nutzer gespeichert und nach jedem Spiel aufaddiert
+
+
+
+?????????????????????????????????????????????????????
+- Ablauf des Spiels: 
+  --> es können nur 2 Spieler mit gleich gewähltem Schwierigkeitsgrad gegeneinander spielen
+  --> jeder der beiden Spieler gibt ein Wort ein, das der Gegner erraten muss mit maximal n (z.B. 10) Buchstaben
+  --> jeder Spieler erhält die Anzahl der zu erratenen Buchstaben
+  --> beide Spieler erraten parallel das jeweilige Wort 
+  --> der Spieler, der sein Wort errät und noch am meisten Leben hat gewinnt und kriegt die Punkte, der andere kriegt keine Punkte
+  --> wenn beide verlieren (alle Leben verbraucht) kriegt niemand Punkte
 
 
 Verwendete Features:
@@ -15,4 +42,6 @@ Verwendete Features:
 
 
 
-UML:
+UML: Beschreibt Kommunikation mit dem Server und skizziert Ablauf/Auswahlmöglichkeiten des Users
+
+https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Hangman.drawio#R7R1dd5s68rfsg8%2FZfXAP37Yf7SRt2pv0ps3udtuXe2QsgzYYWBBxnF%2B%2FEkgYJGFjB1w3TR5qkAYh5ntGI3VgXqyePiQg9m%2BjBQwGhrZ4GpiXA8PQNXNMfmjLpmixR3rR4CVowYC2DffoGfInWWuGFjCtAeIoCjCK641uFIbQxbU2kCTRug62jIL6W2PgQanh3gWB3PoNLbDPWnVnsu24hsjz%2Basd2yp6VoBDs09JfbCI1pUm82pgXiRRhIur1dMFDCj2OGKK59439JYzS2CI2zzwNF3%2B%2BUHbrO8%2B3f3xHIcO%2Fp5eDm02N7zhX5xEWbiA9BltYM6iBPuRF4UguImimDTqpPG%2FEOMNoxXIcESafLwKWC98Qvg%2F9PF3Nrv7Xum5fGIj5zcbfhPiZFN5iN6WT9Gb7WP5HX8uxUn0AC%2BiIEpISxiFZEozGTEMV2mUJS7cgQ3OYSDxIN4BZxZwcFFjHob2DzBaQTJJApDAAGD0WOclwFjSK%2BHKR%2B8iRKZsaEx8LJOxDhOekpX4EMVE2VNb0k%2BTBGwqYDEFSJvfY46E94xqnEQuihH5XeUbt005tx3AebopsR7F5z27ZbT8Kdz4YgbqmzFK9cgINm7JGJ3RrnjbIwgy9gkDwwkIrmZxjaLO%2FzKq3WYrMh0UDsypFj%2BVt0NMSTh18iYMn%2FAQBMijUC7BO0xyQvARyJXHfvP3zHnDPUweCSxrJl8zF0FJWyy2%2BYnYcsjEA7gkndNx3ibP8Sby0AO1AIiS7AP0Qpg8Z2uI0iz0ds2qwzl8zvAzTNIYItevoafyUkH6GPYvi5FnEUHrMsgN1hJR9qhK1SKJ4n9yLblTZMgohLY7hYH3GnWm1m12v64Y3jFr8ys2d6I1y0%2BN8w9lc0PB5gLSiFGP6aUbrWKisejHFwqJewtj3lB6CZYSXTvlrD0OJYwZCoTxthdqoaFh1Qhm1QeIlssU9qJ%2BzPNRPxcBoiQ8J%2FVzCTAMIQo9MIfU8yYmyye%2F9zGCQZMq6HwS0yzl7yfuu6H9meE4oz7IL6CILOfcFJH1sxWReSgOfw9FxN0whSYq9UD04GNMJYvg0AEronNm4TyN6xpi3igMMFxMaRxL7qIYhnkExONk3aASAFI%2Fd5D1umTUPedGsdjrqnIc6zUUDw2FTDjdkNPRnLr86YJcFW645N1KA9l2gyB3HD81vUcZP0lP60Yds6fjXpV%2FI7rXhGUeTsmoTZmAbeyvzgQ0MvjeYP5lgqBbvcmBbglsdawciOGirrWTA1nR6qPaQMbJWNWS%2Be3ckwV9JwFErdM2CSAPZE3e2XW6Wu04rTPyOgpN1Kxf3ACkKXL7sXcVQbYVLovdjWyLxDPGHcm2NFDfqaDR70Y6EeOWqE2PdU%2Bkgfom3fh3I52IcftY0ok8IA3UN%2BkmvxvpJIyLwfaxUicN1DPpuJWukG4armCwyJPDAg1pXqpONeWKF82LCE08iVIms2jsjlwQTFnHCi0W9DWztY8wJH5%2BvrCxTkDcnjfa5wNM0d4pciqOgntMrZlRXpbbldcwfmQeoDTQnjPyz%2F0mxXD1iikiRBflIuBPo4gcjl6DLMYrEkxemIPZxcCcDlgeM6cJIJ8akiuCGNru%2BmsEE%2BQ9QIRTLwG0kdATznOgaEFzn1pAIoIMv16qGqN67qTMZVYzcapUnOjxd0dWOVt%2FR6wRsU45QYrlMXLhwSXFBUHZ%2B9dLHlNY47JVqWXrpFLXuf%2BeCyaH31eScT7exTut8jepUclpGQ7vdVqkgfr2NWQ38RMo1Oi3KKETpetEhYYkb9AWIK2KZJDrXSfNFegqS9MCiqAfhvmqzlcKMLVwmmvkKvheAW4vmAlM0TOY50NR%2FmLZWDKuPRvYl3SsDEcpyzRKumFgmGNjbjqOoCBI%2B8KG44V6FeRwxasJpNZlyTZV9lTM2hwj2R8%2F%2FrW5zTaWNvavvnyI34Nb%2F4eySKNZsJmgNiVpafsdwIRUYd5ClzM4pvkKk9E6mbuvrKua29um8a62rQ2ZujI5d3xZjxKVzITtTSVzWp6JVjMF9TM6NslkCb5i23D30IUUXROlqF6JJi8ViQr2QHjT3A1vjnfCv7gybhe3VQT3M8xAY4yYrtEqAIUDFIWYyw3leNdHweIGbKjLa14Sw%2Bw%2B8LuZHyXomcCDrUtF7DZLjZtaDeKePsnGzNUxvONSpAtNt%2BCpBngDUr4070ZBAOIUFapcL2sJZhHG0ao7J2sscqtirdJU%2BcB6F16WkqTyAv5nsILUEl8Yg6km0ZTZy0O9XFYx0WhKU%2BLeEoN%2Fk4Pl6%2F%2Bs5WulJKBSb%2BGTB%2FOlvLrNnZEJX1DNS6wv8Qjsmb69zw1yTJT2RRSS6QOUkxESLlhDygnEQmCAK%2BZcJvhOodjPBVxUWxK9N5rbEs1p3LOmfhf1wEicRvVzXgbAL0sAOm1IAiQ%2FCij%2B39ikNzZRxMdKNhn15qbJflolH6jNYULzGbkz4CGCKkQ%2FbVCp53ozB4eZA3PS1hyIXk53NJdTXW%2F24DBB19vzwbkYBF2dCSstwhvNO6d5W%2B3eRfZTPWXZC5AI3T4KF6LrM4uS9TPL6QlLTqNjF3vFoNESNURH0e9opDZUTfMS4a1TBKeKUp18leaBiDpxVt%2FckUNXQidjVa10T9XlapLKSwC7F9PeDNU%2BQ%2BW05opm50TJBP05J3Ix0FWe56e5%2F7ssfMAEIyBfaQXzZQK8N0bohRFU67V9McLT1e2%2F4uHdv2e651neF%2Bv77QSWhRG7S235dpMAhQ%2BSY3Kiytual5QbF7YGZL7IjeEeWjXbv5O43RX6vkiC%2BbyrQWWxPuf6Kc7X6%2F4ojHS4hITLFbmD17POPhGMrGJDks63mZxEvyrKIGaq1M6gLFUJYZb%2F8kTPa66LcIS6CNO2JXpNFFrQ6YBc9%2F6n0ZX%2B8e76%2Bq9w%2BN78OPly816xeCrVHZ3A0TXERWtGvZ%2Fi%2B7bWsAeQXRBTXbNNWU5V9TC8sqF7wsvlmbI9PDZgZ0aOm7XvNYPXeTg%2Bku3YLl4%2Fk7Bd4glDF8ZoG7ePpP1TjjBSd%2BU3asTKWqSsrQFZmmauXylgTHM9%2F6ZYOlEs4o5MXVdE2cotyR24Z2pm6DMTeGSdTSvlspO1fzXlIu2EHB%2BpXBzxkADN7E25KOM01SEYzezUom6zqTiuuZyukX3OhNpS%2BWVXe0akgXqm9VGq45fd6iNh%2B9jy270D9Uw21a7WYid9GoOwRj9%2BfopbiBmt0E28%2Bd%2B1ouKW%2F%2Fwjp55GDeZwCVYo2BSg1zB4hDR8q%2FQXBbG0VzfYIS2so3gp7QmjZEX9g7LvESQIkF8SBAKcJfTkxZ1wLoibQNaMMWgn3dmY9wSQlpAOWf5OfjJKYh%2BEbEijaKudzUPuK8fzFH2Ibhtgb9L4p%2BY9OCGDLcn4%2FE2sGJ0ycn40ZOU16yhZ1CdWjkW%2BZf6AyHB0zEIdDpko1ODmxGXyclkbCnQ0rHFBQsOasAubUzMfdQHdKCFCE4VD7CP3IYQpmx4KEUYcPyJshZY74SrTqcEtgwhgETkLlMYB2HDwAIW03uRvaEUTpCA%2FWUY%2B8OcboF5tURpOr74CDIm%2FRn1cigPk%2Bhh5eQ6Dfv012B6NRuXA9SMqDx5c03M8iz0g5ZkThbA0HDvBUiCqLEVFAXZo2w4pCa%2FvqncUmz3KXVcnye12vtfj9fkMnRmfU%2B79UNFa3vrxGSKmQn9kSbGlzqXnFBbbHWl0uN1q1yBmP2kDx3xsW7aC35ZjF7puRyljQVpHu0446noDh5KCB6aiDhfXEn3NCD93cRWlbCQe8XSsrygN1LO4KorD2hG7tt2uBQ%2FUMgpnT96G%2FSAHk1cXsoqOKLVd7WAR0gI8TdA4L1NtJRrhR%2Brv6OyoZiVvytsXvvHydFaljNLc%2B6NOXFmYvHXnCG%2BAV7zpWtgk5CiKOXrbSa%2Bk12H5gldwOoikvY%2FN9Ej25MSZHkV53Ws%2FskA8iGKkKIE5qfgoTmjZJT69LwF2fiTi3mPs%2BQfvLYHhgOeiBgTra4s80nrpUPA7Jo7xzqn8jXpxHhzBkFjj3c6AIzgDvMrlSGeA3G7%2FN5ICfPufuphX%2Fwc%3D
