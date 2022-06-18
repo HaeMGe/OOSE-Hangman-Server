@@ -43,7 +43,7 @@ public class Nutzer implements INutzer{
 
 
     public String start(int schwierigkeit){
-        String ergebnis = start(5, schwierigkeit);
+        String ergebnis = start(1, schwierigkeit);
         return ergebnis;
     }
 
@@ -64,16 +64,18 @@ public class Nutzer implements INutzer{
             this.spielAktuell = neuesSpiel;  //Nutzer das Spiel zuweisen
             warteraum.get(1).spielAktuell = neuesSpiel;  //Gegner das Spiel zuweisen
             warteraum.remove(this);   //Spieler aus Warteraum entfernen
+            Nutzer gegner = warteraum.get(1);
             warteraum.remove(warteraum.get(1));
-            return "Dein Gegner: " + warteraum.get(1);   //Gegner zurückliefern
+            return "Dein Gegner: " + gegner;   //Gegner zurückliefern
         }
         else {
             Spiel neuesSpiel = new Spiel(this, warteraum.get(0), schwierigkeit);
             this.spielAktuell = neuesSpiel;
             warteraum.get(0).spielAktuell = neuesSpiel;
+            Nutzer gegner = warteraum.get(0);
             warteraum.remove(this);   //Spieler aus Warteraum entfernen
             warteraum.remove(warteraum.get(0));
-            return "Dein Gegner: " + warteraum.get(0);
+            return "Dein Gegner: " + gegner;
         }
     }
 

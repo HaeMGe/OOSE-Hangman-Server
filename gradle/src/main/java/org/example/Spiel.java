@@ -2,8 +2,9 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
-public class Spiel {
+public class Spiel implements ISpiel{
     String geheimesWort;  //zu erraten
     final int leben = 10;   //Anzahl leben
     ArrayList<Character> fehlversuche = new ArrayList<Character>();  //Buchstaben aus falschen Rateversuchen
@@ -11,12 +12,15 @@ public class Spiel {
     Nutzer spieler1;
     Nutzer spieler2;
     int schierigkeitsgrad;
+    int[] punkteNachSchwierigkeit = {5, 10, 15, 20};   //maximaler Gewinn, Level = Index+1
+    int[] lebenNachSchwierigkeit = {20, 15, 10, 5};    //Leben, Level = Index+1
+
 
 
 
     public Spiel(Nutzer spieler1, Nutzer spieler2, int schwierigkeitsgrad){
-
-
+        String wort = this.getRaetsel();
+        this.geheimesWort = wort;
         this.erraten = new Character[geheimesWort.length()];
 
         Arrays.fill(erraten,  "0".charAt(0));  //alle Felder mit "0" ausfüllen
@@ -53,6 +57,15 @@ public class Spiel {
         }
         fehlversuche.add(buchstabe);
         return false;
+    }
+
+    public String getRaetsel(){
+        Random random = new Random();
+        int zahl = random.nextInt() % Main.woerter.length;  //Zufallszahl aus Intervall von Wörterarray generieren
+        zahl = Math.abs(zahl);
+        System.out.println(Main.woerter.length);
+        System.out.println(zahl);
+        return Main.woerter[zahl];   //Wort zurückgeben
     }
 
     public String toString(){

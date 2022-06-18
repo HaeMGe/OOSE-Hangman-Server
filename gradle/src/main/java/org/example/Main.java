@@ -7,6 +7,7 @@ import static spark.Spark.*;
 public class Main {
     public static ArrayList<Nutzer> nutzerListe = new ArrayList<>();
     public static ArrayList<Nutzer> warteraum = new ArrayList<>();
+    public static String[] woerter = {"Hallo", "Loesung", "Wort", "Moneymaker", "Niere", "Hangman"};
     public static void main(String[] args) {
         System.out.println("Hello world!");
 
