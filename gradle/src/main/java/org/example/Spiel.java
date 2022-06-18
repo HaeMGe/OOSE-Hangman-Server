@@ -4,26 +4,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Spiel {
-    String geheimesWort1;  //zu erraten für Spieler 1
-    String geheimesWort2;  //zu erraten für Spieler 2
+    String geheimesWort;  //zu erraten
     final int leben = 10;   //Anzahl leben
     ArrayList<Character> fehlversuche = new ArrayList<Character>();  //Buchstaben aus falschen Rateversuchen
-    Character[] erratenS1;  //erratene Indizes Spieler 1
-    Character[] erratenS2;  //erratene Indizes Spieler 2
-
+    Character[] erraten;  //erratene Indizes
     Nutzer spieler1;
     Nutzer spieler2;
+    int schierigkeitsgrad;
 
 
 
-    public Spiel(String wortFuer1, String wortFuer2, Nutzer spieler1, Nutzer spieler2){
-        this.geheimesWort1 = wortFuer1;
-        this.geheimesWort2 = wortFuer2;
+    public Spiel(Nutzer spieler1, Nutzer spieler2, int schwierigkeitsgrad){
 
-        this.erratenS1 = new Character[geheimesWort1.length()];
-        this.erratenS2 = new Character[geheimesWort2.length()];
-        Arrays.fill(erratenS1,  "0".charAt(0));  //alle Felder mit "0" ausfüllen
-        Arrays.fill(erratenS2,  "0".charAt(0));  //alle Felder mit "0" ausfüllen
+
+        this.erraten = new Character[geheimesWort.length()];
+
+        Arrays.fill(erraten,  "0".charAt(0));  //alle Felder mit "0" ausfüllen
         this.spieler1 = spieler1;
         this.spieler2 = spieler2;
 
@@ -33,10 +29,7 @@ public class Spiel {
         return "Buchstaben, die nicht oder nicht mehr zum Wort gehoeren: " + this.fehlversuche;
     }
 
-    public String getErraten(int i){
-        Character[] erraten;
-       if(i == 1) erraten = erratenS1;
-       else erraten = erratenS2;
+    public String getErraten(){
 
         StringBuilder zustand = new StringBuilder("Teillösung: ");
         for(Character c: erraten){   //durch Array iterieren
@@ -49,19 +42,7 @@ public class Spiel {
     }
 
 
-    public boolean rateVersuch(Character buchstabe, int spielerNummer) {
-        String geheimesWort;
-        Character[] erraten;
-
-        if(spielerNummer == 1) {
-            geheimesWort = geheimesWort1;
-            erraten = erratenS1;
-        }
-        else {
-            geheimesWort = geheimesWort2;
-            erraten = erratenS2;
-        }
-
+    public boolean rateVersuch(Character buchstabe, Nutzer spieler) {
 
         for (int i = 0; i < geheimesWort.length(); i++) {
             if (buchstabe.equals(geheimesWort.charAt(i))) {  //Buchstabe im Wort
@@ -74,11 +55,8 @@ public class Spiel {
         return false;
     }
 
-    public String toString(int SpielerNummer){
-        if(SpielerNummer == 1) {
-            return "Spiel: " + geheimesWort1 + " Spieler 1: " + spieler1 + " Spieler 2: " + spieler2;
-        }
-        else return "Spiel: " + geheimesWort2 + " Spieler 1: " + spieler1 + " Spieler 2: " + spieler2;
+    public String toString(){
+        return "Spiel: " + geheimesWort + " Spieler 1: " + spieler1 + " Spieler 2: " + spieler2;
     }
 
 }

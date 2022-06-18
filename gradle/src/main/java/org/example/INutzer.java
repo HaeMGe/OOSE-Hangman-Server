@@ -30,14 +30,14 @@ public interface INutzer {
      * Ein Spiel beginnen, wenn Gegner gefunden
      * @return String, der für die Client-Server-Kommunikation wichtig ist
      */
-    public String start();
+    public String start(int schwierigkeit);
 
     /**
      * Interne Implementierung von start()
      * @param counter Zähler, wie lange auf Mitspieler gewartet werden soll
      * @return Meldung, ob Spielpartner gefunden wurde
      */
-    private String start(int counter){return null;}
+    private String start(int counter, int schwierigkeit){return null;}
 
 
     /**

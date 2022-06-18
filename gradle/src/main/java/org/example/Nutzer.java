@@ -42,13 +42,12 @@ public class Nutzer implements INutzer{
 
 
 
-    public String start(){
-        String ergebnis = start(5);
-        System.out.println(ergebnis);
+    public String start(int schwierigkeit){
+        String ergebnis = start(5, schwierigkeit);
         return ergebnis;
     }
 
-    private String start(int counter){
+    private String start(int counter, int schwierigkeit){
         while(Main.warteraum.size()<2){  //nur Nutzer selbst im Warteraum
             if(counter>0) {
                 try{
@@ -61,24 +60,28 @@ public class Nutzer implements INutzer{
             }
         }
         if(Main.warteraum.get(0) == this){    //ist erste oder zweite Person der Nutzer im Warteraum?
-            Spiel neuesSpiel = new Spiel("hier muss ein Wort hin", "hier muss 2. Wort hin",  this, warteraum.get(1));
-            this.spielAktuell = neuesSpiel;
-            warteraum.get(1).spielAktuell = neuesSpiel;
+            Spiel neuesSpiel = new Spiel(this , warteraum.get(1), schwierigkeit);
+            this.spielAktuell = neuesSpiel;  //Nutzer das Spiel zuweisen
+            warteraum.get(1).spielAktuell = neuesSpiel;  //Gegner das Spiel zuweisen
+            warteraum.remove(this);   //Spieler aus Warteraum entfernen
+            warteraum.remove(warteraum.get(1));
             return "Dein Gegner: " + warteraum.get(1);   //Gegner zurückliefern
         }
         else {
-            Spiel neuesSpiel = new Spiel("hier muss ein Wort hin", "hier kommt zweites Wort hin",this, warteraum.get(0));
+            Spiel neuesSpiel = new Spiel(this, warteraum.get(0), schwierigkeit);
             this.spielAktuell = neuesSpiel;
             warteraum.get(0).spielAktuell = neuesSpiel;
+            warteraum.remove(this);   //Spieler aus Warteraum entfernen
+            warteraum.remove(warteraum.get(0));
             return "Dein Gegner: " + warteraum.get(0);
         }
     }
 
-    public static void startAnmeldungWarteraum(String name){
+    public static void startAnmeldungWarteraum(String name, int schwierigkeit){
         for(Nutzer nutzer: Main.nutzerListe){
             if(nutzer.getName().equals(name))
                 Main.warteraum.add(nutzer);  //in den Warteraum kommen
-            nutzer.start();
+            nutzer.start(schwierigkeit);
         }
     }
 
