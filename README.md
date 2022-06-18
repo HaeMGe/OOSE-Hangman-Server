@@ -25,20 +25,24 @@ Spielregeln:
 
 
 
-?????????????????????????????????????????????????????
 - Ablauf des Spiels: 
+  --> bei jedem Spiel wird aus einem gespeicherten Pool aus Wörtern eines zufällig ausgewählt und die Anzahl an Buchstaben den beiden Spielern mitgeteilt
   --> es können nur 2 Spieler mit gleich gewähltem Schwierigkeitsgrad gegeneinander spielen
-  --> jeder der beiden Spieler gibt ein Wort ein, das der Gegner erraten muss mit maximal n (z.B. 10) Buchstaben
-  --> jeder Spieler erhält die Anzahl der zu erratenen Buchstaben
-  --> beide Spieler erraten parallel das jeweilige Wort 
+  --> beide Spieler wechseln sich immer ab mit dem Erraten eines Buchstabens oder eines ganzen Wortes
   --> der Spieler, der sein Wort errät und noch am meisten Leben hat gewinnt und kriegt die Punkte, der andere kriegt keine Punkte
   --> wenn beide verlieren (alle Leben verbraucht) kriegt niemand Punkte
+  --> wenn man ein ganzes Wort erraten möchte und die Anwort falsch ist, werden 2 Punkte vom möglichen Gewinn abgezogen
+  --> Ende des Spiels:
+             - ein Spieler errät das richtige Wort und hat noch mehr als 0 Leben
+             - beide Spieler erraten das Wort nicht und haben keine Leben mehr
 
 
 Verwendete Features:
+Spark Server
 
 
 
+Paths und deren Beschreibung:
 
 
 
