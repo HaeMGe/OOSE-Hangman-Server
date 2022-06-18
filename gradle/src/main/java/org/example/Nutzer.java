@@ -3,6 +3,7 @@ package org.example;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import static org.example.Main.nutzerListe;
 import static org.example.Main.warteraum;
@@ -10,11 +11,14 @@ import static org.example.Main.warteraum;
 public class Nutzer implements INutzer{
 
 
+    static Scanner sc = new Scanner(System.in);
     String name;
     String passwort;
     int punkte;  //Punktestand eines Nutzers
 
     Spiel spielAktuell;
+    int leben;  //Leben im aktuellen Spiel
+    int strafe;  //Strafen im akutellen Spiel (falsches Wort erraten)
 
     //parameterloser Konstruktor
     public Nutzer(String name, String passwort){
@@ -87,6 +91,15 @@ public class Nutzer implements INutzer{
         }
     }
 
+    public Character buchstabeRaten(){ //wird von Client an Server gesendet
+        System.out.println("Ihr Buchstabenversuch:");
+        String c = sc.next();
+        return c.charAt(0);
+    }
+    public String wortRaten(){
+        System.out.println("Ihr Wortversuch:");
+        return sc.next();
+    }
 
     public String toString(){
         return this.name + " Punkte: " + this.punkte;

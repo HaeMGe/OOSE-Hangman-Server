@@ -25,7 +25,14 @@ public interface ISpiel {
      * @param spieler Spieler, der gerade raet
      * @return true = Buchstabe war richtig, false = Buchstabe war falsch
      */
-    public boolean rateVersuch(Character buchstabe, Nutzer spieler);
+    public boolean rateVersuchChar(Character buchstabe, Nutzer spieler);
+    /**
+     * Spieler gibt Wort als Rateversuch ein
+     * @param wort Wort wird von Nutzer als Tipp abgegeben
+     * @param spieler Spieler, der gerade raet
+     * @return true = Wort war richtig, false = Wort war falsch
+     */
+    public boolean rateVersuchWort(String wort, Nutzer spieler);
 
 
     /**
