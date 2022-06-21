@@ -23,4 +23,9 @@ public class LogikIntern {
         //Zwei Nutzer als Gegner iwie auswählen und so
         return "";
     }
+
+
+
+
+
 }

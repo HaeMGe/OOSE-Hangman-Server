@@ -26,8 +26,9 @@ Spielregeln:
 
 
 - Ablauf des Spiels: 
+- --> ein Spieler kann einen Pool eröffnen mit einem vordefinierten Schwierigkeitsgead. Andere User können dann einem Pool beitreten
+und mitspielen
   --> bei jedem Spiel wird aus einem gespeicherten Pool aus Wörtern eines zufällig ausgewählt und die Anzahl an Buchstaben den beiden Spielern mitgeteilt
-  --> es können nur 2 Spieler mit gleich gewähltem Schwierigkeitsgrad gegeneinander spielen
   --> beide Spieler wechseln sich immer ab mit dem Erraten eines Buchstabens oder eines ganzen Wortes
   --> der Spieler, der sein Wort errät und noch am meisten Leben hat gewinnt und kriegt die Punkte, der andere kriegt keine Punkte
   --> wenn beide verlieren (alle Leben verbraucht) kriegt niemand Punkte

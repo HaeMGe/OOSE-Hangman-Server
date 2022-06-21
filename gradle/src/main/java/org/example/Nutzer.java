@@ -91,10 +91,20 @@ public class Nutzer implements INutzer{
         }
     }
 
-    public Character buchstabeRaten(){ //wird von Client an Server gesendet
+    public String rateVersuch(int option){
+        if(option == 0)  //Buchstabe raten
+            return buchstabeRaten();
+        else{
+            if(option == 1){  //Wort raten
+                return wortRaten();
+            }
+        }
+        return null;
+    }
+    public String buchstabeRaten(){ //wird von Client an Server gesendet
         System.out.println("Ihr Buchstabenversuch:");
         String c = sc.next();
-        return c.charAt(0);
+        return c;
     }
     public String wortRaten(){
         System.out.println("Ihr Wortversuch:");
