@@ -64,6 +64,7 @@ public class RespClass {
         for(Pool p: Main.poolListe){
             pools.append(p);
         }
-        return null;
+        String info = pools.toString();
+        return "{"+info+"}";
     }
 }

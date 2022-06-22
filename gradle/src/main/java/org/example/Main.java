@@ -18,6 +18,10 @@ public class Main {
         post("/games/hangman/start/neuesWort/0", (q, a) -> {return RespClass.buchstabeRaten(q.body());});  //Buchstabe raten
         post("/games/hangman/start/neuesWort/1", (q, a) -> "{ Wort angekommen! }");  //Wort raten
         post("/games/hangman/start/neuerPool/", (q, a) -> { return RespClass.neuerPool(q.body());}); //neuen Pool anlegen
+        post("/games/hangman/start/poolSuchen/", (q, a) ->  { return RespClass.getPools();});  //Pools schicken
+        post("/games/hangman/start/poolSuchen/", (q, a) ->  "{dgdfg}");  //Pools schicken
+
+
 
         post("/games/hangman/start/lobby",(q, a)-> LogikIntern.lobby(q.body()));
 
