@@ -35,11 +35,11 @@ public class Spiel implements ISpiel{
         this.fertig = false; //gobt an, ob Spiel beendet
 
 
-        abwechseln();
+      //  abwechseln();
 
     }
 
-    public void abwechseln(){
+   /** public void abwechseln(){
         while(!fertig){
             System.out.println();
             System.out.println("Eingabe fuer " + spieler1);
@@ -65,6 +65,7 @@ public class Spiel implements ISpiel{
         }
         return;
     }
+    */
     public String getFehlversuche(){
         return "Buchstaben, die nicht oder nicht mehr zum Wort gehoeren: " + this.fehlversuche;
     }

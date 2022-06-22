@@ -8,12 +8,11 @@ import java.util.Scanner;
 import static org.example.Main.nutzerListe;
 import static org.example.Main.warteraum;
 
-public class Nutzer implements INutzer{
+public class Nutzer{
 
 
     static Scanner sc = new Scanner(System.in);
     String name;
-    String passwort;
     int punkte;  //Punktestand eines Nutzers
 
     Spiel spielAktuell;
@@ -21,9 +20,8 @@ public class Nutzer implements INutzer{
     int strafe;  //Strafen im akutellen Spiel (falsches Wort erraten)
 
     //parameterloser Konstruktor
-    public Nutzer(String name, String passwort){
+    public Nutzer(String name){
         this.name = name;
-        this.passwort = passwort;
         this.punkte = 0;
         Main.nutzerListe.add(this);
     }
@@ -33,9 +31,7 @@ public class Nutzer implements INutzer{
     public String getName() {
         return name;
     }
-    public String getPasswort() {
-        return passwort;
-    }
+
     public int getPunktestand() {
         return punkte;
     }

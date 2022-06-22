@@ -7,9 +7,11 @@ public class Pool {
     ArrayList<Nutzer> mitglieder = new ArrayList<>();
     int level;
 
+    int id;
 
     //Nutzer eröffnet Pool unter Angabe von Schwierigkeit
-    public Pool(Nutzer initiator, int level){
+    public Pool(Nutzer initiator, int level, int id){
+        this.id = id;
         this.level = level;
        this.spiel = new Game(level);  //Neues Spiel mit richtigem Schwierigkeitsgrad erschaffen
         Main.poolListe.add(this); //Zur Poolliste hinzufügen

@@ -16,7 +16,7 @@ public class LogikIntern {
         schwierigkeit = schwierigkeit.replace("\"", "");
 
 
-        Nutzer nutzer = new Nutzer(nutzerName, nutzerPasswort);
+        Nutzer nutzer = new Nutzer(nutzerName);
 
         Main.warteraum.add(nutzer);
 

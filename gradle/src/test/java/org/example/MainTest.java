@@ -8,8 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class MainTest {
     @Test
     void neuerNutzer(){
-        Nutzer nutzer1 = new Nutzer("nutzer1", "123");
-        Nutzer nutzer2 = new Nutzer("nutzer2", "4711");
+        Nutzer nutzer1 = new Nutzer("nutzer1");
+        Nutzer nutzer2 = new Nutzer("nutzer2");
 
 
         assertEquals(0, nutzer1.getPunktestand());

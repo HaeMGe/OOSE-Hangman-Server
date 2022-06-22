@@ -16,14 +16,17 @@ public class RespClass {
             }
             else return "Spieler nicht vorhanden";
         }
+        System.out.println("nach nutzer");
         String poolNr = jObj.get("pool").toString();
         poolNr = poolNr.replace("\"", "");
         int pool = Integer.parseInt(poolNr);  //Poolnr
+        System.out.println("in pool");
         Pool poolAktuell = Main.poolListe.get(pool);
+        System.out.println("nach Pool");
 
         String zeichen = jObj.get("zeichen").toString();
         zeichen = zeichen.replace("\"", "");
-
+        System.out.println("nach zeichen");
 
         boolean erfolg = poolAktuell.spiel.rateVersuchChar(zeichen.charAt(0), spieler);
         return "{" + erfolg + "}";
