@@ -66,4 +66,38 @@ public class RespClass {
         String info = pools.toString();
         return "{"+info+"}";
     }
-}
+
+    public static String poolBeitreten(String body) {
+
+        JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
+        String nutzerName = jObj.get("name").toString();
+        nutzerName = nutzerName.replace("\"", "");
+
+        Nutzer neuerSpieler =  null;
+        for(Nutzer n: Main.nutzerListe){
+            if(n.getName().equals(nutzerName)){
+                neuerSpieler = n;
+            }
+
+
+        }
+
+        String pool = jObj.get("pool").toString();
+        pool = pool.replace("\"", "");
+        int pool2 = Integer.parseInt(pool);
+        Pool poolAktuell = null;
+        for(Pool p : Main.poolListe){
+            if(p.id == pool2){
+                poolAktuell = p;
+            }
+            poolAktuell.mitglieder.add(neuerSpieler);
+        }
+
+        return "{ Poolbeitritt erfolgreich }";
+
+    }
+
+
+
+    }
+
