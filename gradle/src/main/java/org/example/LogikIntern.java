@@ -18,7 +18,7 @@ public class LogikIntern {
 
         Nutzer nutzer = new Nutzer(nutzerName);
 
-        Main.warteraum.add(nutzer);
+       // Main.warteraum.add(nutzer);
 
         //Zwei Nutzer als Gegner iwie auswählen und so
         return "";

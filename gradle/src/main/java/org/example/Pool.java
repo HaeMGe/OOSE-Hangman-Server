@@ -34,6 +34,6 @@ public class Pool {
 
 
     public String toString(){
-        return "Nummer: " + Main.poolListe.indexOf(this) + ", Schwierigkeit: " + level;
+        return "ID: " + id + " Nummer in Liste: " + Main.poolListe.indexOf(this) + ", Schwierigkeit: " + level;
     }
 }

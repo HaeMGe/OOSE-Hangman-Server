@@ -52,7 +52,6 @@ public class RespClass {
         schwierigkeit = schwierigkeit.replace("\"", "");
         int level = Integer.parseInt(schwierigkeit);
         Pool neuerPool = new Pool(aktuellerNutzer, level, pool);
-        Main.poolListe.add(neuerPool);
         for(Pool p : Main.poolListe) {
             return p.id != pool;    //ist ID schon vergeben?
         }

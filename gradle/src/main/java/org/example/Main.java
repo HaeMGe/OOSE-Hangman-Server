@@ -10,8 +10,6 @@ public class Main {
     public static ArrayList<Nutzer> warteraum = new ArrayList<>();
     public static String[] woerter = {"Hallo", "Loesung", "Wort", "Moneymaker", "Niere", "Hangman"};
     public static void main(String[] args) {
-        poolListe.add(new Pool(new Nutzer("ich"), 0, 7));
-        System.out.println("Hello world!");
 
 
         post("/games/hangman/start", (q, a) -> "{ Herzlich Willkommen vom Server! }");
