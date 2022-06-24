@@ -15,6 +15,7 @@ public class Pool {
         this.level = level;
        this.spiel = new Game(level);  //Neues Spiel mit richtigem Schwierigkeitsgrad erschaffen
         Main.poolListe.add(this); //Zur Poolliste hinzufügen
+        mitglieder.add(initiator);
     }
     public void newGame(){
         this.spiel = new Game(level);  //neues Spiel mit Pool assoziieren
@@ -34,6 +35,6 @@ public class Pool {
 
 
     public String toString(){
-        return "ID: " + id + " Nummer in Liste: " + Main.poolListe.indexOf(this) + ", Schwierigkeit: " + level;
+        return "ID: " + id + " Nummer in Liste: " + Main.poolListe.indexOf(this) + ", Schwierigkeit: " + level + "Mitgliederzahl: " + mitglieder.size();
     }
 }

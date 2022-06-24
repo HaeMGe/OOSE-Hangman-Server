@@ -66,42 +66,60 @@ public class RespClass {
     }
 
     public static String getPools(){
-        StringBuilder pools = new StringBuilder("Alle Pools: ");
+        StringBuilder pools = new StringBuilder();
         for(Pool p: Main.poolListe){
             pools.append(p);
         }
         String info = pools.toString();
-        return "{"+info+ "Gesamt: " + Main.poolListe.size()+"}";
+        boolean empty = false;
+        if(Main.poolListe.size()== 0){
+            empty = true;
+        }
+        return "{"+info+ "Vorhanden: " + empty+"}";
     }
 
     public static String poolBeitreten(String body) {
-
         JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
         String nutzerName = jObj.get("name").toString();
         nutzerName = nutzerName.replace("\"", "");
 
+        //Spieler in Liste finden
         Nutzer neuerSpieler =  null;
         for(Nutzer n: Main.nutzerListe){
             if(n.getName().equals(nutzerName)){
                 neuerSpieler = n;
             }
-
-
         }
 
+        //Pool finden
         String pool = jObj.get("pool").toString();
         pool = pool.replace("\"", "");
         int pool2 = Integer.parseInt(pool);
+
         Pool poolAktuell = null;
-        for(Pool p : Main.poolListe){
-            if(p.id == pool2){
+        for(Pool p : Main.poolListe) {
+            if (p.id == pool2) {
                 poolAktuell = p;
             }
-            poolAktuell.mitglieder.add(neuerSpieler);
         }
 
-        return "{ Poolbeitritt erfolgreich }";
 
+        //Testten, ob Beitritt möglich
+        if(neuerSpieler!=null && poolAktuell != null){
+
+            //Ist Nutzer bereits im Pool?
+            for(Nutzer n: poolAktuell.mitglieder) {
+                if (n.getName().equals(neuerSpieler.getName())) {
+                    System.out.println(n.getName());
+                    System.out.println(neuerSpieler.getName());
+                    return "{ Erfolg: " + false + "}";
+                }
+            }
+            poolAktuell.mitglieder.add(neuerSpieler);  //Spieler dem Pool hinzufügen
+            return "{ Erfolg: " + true+ "}";
+        }
+
+        return " ende ";
     }
 
 
