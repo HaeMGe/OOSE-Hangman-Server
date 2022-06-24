@@ -40,22 +40,29 @@ public class RespClass {
         nutzerName = nutzerName.replace("\"", "");
         Nutzer aktuellerNutzer = null;
         for(Nutzer n: Main.nutzerListe){
-            if(n.getName().equals(nutzerName))
+            if(n.getName().equals(nutzerName)) {
                 aktuellerNutzer = n;
+                System.out.println(n);
+            }
         }
 
         String poolID = jObj.get("pool").toString();
         poolID = poolID.replace("\"", "");
         int pool = Integer.parseInt(poolID);
+        System.out.println(pool);
 
         String schwierigkeit = jObj.get("level").toString();
         schwierigkeit = schwierigkeit.replace("\"", "");
         int level = Integer.parseInt(schwierigkeit);
-        Pool neuerPool = new Pool(aktuellerNutzer, level, pool);
+        System.out.println(level);
+
         for(Pool p : Main.poolListe) {
-            return p.id != pool;    //ist ID schon vergeben?
+            if (p.id == pool){  //id schon vorhanden
+                return false;
+            }
         }
-        return false;
+        Pool neuerPool = new Pool(aktuellerNutzer, level, pool);  //alles ok, neuer Pool kann angelegt werden
+        return true;
     }
 
     public static String getPools(){
@@ -64,7 +71,7 @@ public class RespClass {
             pools.append(p);
         }
         String info = pools.toString();
-        return "{"+info+"}";
+        return "{"+info+ "Gesamt: " + Main.poolListe.size()+"}";
     }
 
     public static String poolBeitreten(String body) {
@@ -98,6 +105,14 @@ public class RespClass {
     }
 
 
-
+    public static String neuerNutzer(String body) {
+        JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
+        String nutzerName = jObj.get("name").toString();
+        nutzerName = nutzerName.replace("\"", "");
+        System.out.println(nutzerName);
+        Nutzer neuerNutzer = new Nutzer(nutzerName);
+        Main.nutzerListe.add(neuerNutzer);
+        return "{ Ihr Name wurde im System gespeichert. Sie koennen jetzt loslegen! }";
     }
+}
 
