@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        post("/games/hangman/start", (q, a) -> "{ Herzlich Willkommen vom Server! }");
+        post("/games/hangman/start", (q, a) -> "{ 'text' : 'Herzlich Willkommen vom Server!' }");
         post("/games/hangman/start/neuerNutzer", (q, a) -> { return RespClass.neuerNutzer(q.body());});
 
 
