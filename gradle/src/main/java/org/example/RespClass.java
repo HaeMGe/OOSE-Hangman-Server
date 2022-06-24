@@ -160,7 +160,7 @@ public class RespClass {
     }
 
     public static String status(String body) {
-        //fürs polling
+        //fürs polling, gibt alle infos zum spiel
         return "";
     }
 
