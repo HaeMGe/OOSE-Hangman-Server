@@ -115,8 +115,13 @@ public class RespClass {
                     return "{ Erfolg: " + false + "}";
                 }
             }
-            poolAktuell.mitglieder.add(neuerSpieler);  //Spieler dem Pool hinzufügen
-            return "{ Erfolg: " + true+ "}";
+
+            if(poolAktuell.anzahlSpieler() !=2){
+                poolAktuell.mitglieder.add(neuerSpieler);  //Spieler dem Pool hinzufügen
+                return "{ Erfolg: " + true+ "}";
+            }else{
+                return "{ Erfolg: " + false+ "}";
+            }
         }
 
         return " ende ";
