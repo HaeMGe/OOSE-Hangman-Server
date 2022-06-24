@@ -30,6 +30,10 @@ public class Main {
         //WarteRaum im Pool
         post("/games/hangman/start/pool/warteRaum", (q,a) -> {return RespClass.poolWarteRaum(q.body());});
 
+        //Spielstatus abfragen/antwort --> wie dieses polling aufm blatt
+        post("/games/hangman/start/spiel/status", (q,a) -> {return RespClass.status(q.body());});
+        //Abfrage , wer als erstes anfangen darf
+        post("/games/hangman/start/spiel/anfang", (q,a) -> {return RespClass.anfang(q.body());});
 
         post("/games/hangman/start/lobby",(q, a)-> LogikIntern.lobby(q.body()));
 

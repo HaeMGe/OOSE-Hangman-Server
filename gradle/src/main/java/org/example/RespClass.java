@@ -158,5 +158,15 @@ public class RespClass {
             return "{false}";
         }
     }
+
+    public static String status(String body) {
+        //fürs polling
+        return "";
+    }
+
+    public static String anfang(String body) {
+        //gibt zurück ob der spieler anfängt oder nicht
+        return "";
+    }
 }
 
