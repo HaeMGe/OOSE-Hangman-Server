@@ -21,6 +21,10 @@ public class Pool {
         this.spiel = new Game(level);  //neues Spiel mit Pool assoziieren
     }
 
+    public int anzahlSpieler(){
+        return mitglieder.size();
+    }
+
 
     public boolean startGame(){
         if(mitglieder.size()>=2){

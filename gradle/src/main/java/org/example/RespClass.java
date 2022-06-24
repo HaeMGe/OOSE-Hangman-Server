@@ -132,5 +132,26 @@ public class RespClass {
         Main.nutzerListe.add(neuerNutzer);
         return "{ Ihr Name wurde im System gespeichert. Sie koennen jetzt loslegen! }";
     }
+
+    public static String poolWarteRaum(String body) {
+
+        JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
+        String poolID = jObj.get("poolID").toString();
+        poolID = poolID.replace("\"", "");
+        int poolID2 = Integer.parseInt(poolID);
+
+        Pool poolAktuell = null;
+        for(Pool p : Main.poolListe) {
+            if (p.id == poolID2) {
+                poolAktuell = p;
+            }
+        }
+
+        if(poolAktuell.anzahlSpieler() == 2){
+            return "{true}";
+        }else{
+            return "{false}";
+        }
+    }
 }
 

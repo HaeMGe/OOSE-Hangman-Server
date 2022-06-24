@@ -27,7 +27,8 @@ public class Main {
         post("/games/hangman/start/poolSuchen/", (q, a) ->  { return RespClass.getPools();});  //Pools schicken
         post("/games/hangman/start/beitreten/", (q, a) ->  {return RespClass.poolBeitreten(q.body());});  //Pools beitreten
 
-
+        //WarteRaum im Pool
+        post("/games/hangman/start/pool/warteRaum", (q,a) -> {return RespClass.poolWarteRaum(q.body());});
 
 
         post("/games/hangman/start/lobby",(q, a)-> LogikIntern.lobby(q.body()));
