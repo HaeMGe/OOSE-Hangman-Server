@@ -80,8 +80,9 @@ public class Game implements IGame{
         Random random = new Random();
         int zahl = random.nextInt() % Main.woerter.length;  //Zufallszahl aus Intervall von Wörterarray generieren
         zahl = Math.abs(zahl);
-        System.out.println(Main.woerter.length);
-        System.out.println(zahl);
+        //System.out.println(Main.woerter.length);
+        //System.out.println(zahl);
+        System.out.println("Das zu erratende Wort für den Pool ist: "+Main.woerter[zahl]);
         return Main.woerter[zahl];   //Wort zurückgeben
     }
 

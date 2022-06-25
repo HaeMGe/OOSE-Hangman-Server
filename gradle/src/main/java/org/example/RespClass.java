@@ -168,8 +168,27 @@ public class RespClass {
     }
 
     public static String anfang(String body) {
-        //gibt zurück ob der spieler anfängt oder nicht
-        return "";
+
+        JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
+        String poolID = jObj.get("poolID").toString();
+        poolID = poolID.replace("\"", "");
+        int poolID2 = Integer.parseInt(poolID);
+
+        String name = jObj.get("name").toString();
+        name = name.replace("\"", "");
+
+        Pool poolAktuell = null;
+        for(Pool p : Main.poolListe) {
+            if (p.id == poolID2) {
+                poolAktuell = p;
+            }
+        }
+
+        if(poolAktuell.mitglieder.get(0).getName().equals(name)){
+            return "{'anfang':'true'}";
+        }else{
+            return "{'anfang':'false'}";
+        }
     }
 
     public static String meinePools(String body) {
