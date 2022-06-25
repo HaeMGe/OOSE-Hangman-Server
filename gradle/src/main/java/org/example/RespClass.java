@@ -167,6 +167,11 @@ public class RespClass {
         return "";
     }
 
+    /**
+     * Gibt dem Client zurück, ob er oder der Gegner anfangen darf zu Raten
+     * @param body JSON mit der PoolID und dem Namen des Nutzers
+     * @return boolean, welches angibt, ob der Client anfangen darf zu raten oder nicht
+     */
     public static String anfang(String body) {
 
         JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
@@ -184,6 +189,7 @@ public class RespClass {
             }
         }
 
+        //Der erste Nutzer in der Liste vom Pool (der Nutzer der den pool erstellt hat im endeffekt) darf anfangen
         if(poolAktuell.mitglieder.get(0).getName().equals(name)){
             return "{'anfang':'true'}";
         }else{
