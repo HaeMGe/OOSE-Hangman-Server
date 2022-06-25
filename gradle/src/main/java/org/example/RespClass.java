@@ -135,7 +135,7 @@ public class RespClass {
         System.out.println(nutzerName);
         Nutzer neuerNutzer = new Nutzer(nutzerName);
         Main.nutzerListe.add(neuerNutzer);
-        return "{ Ihr Name wurde im System gespeichert. Sie koennen jetzt loslegen! }";
+        return "{ 'neuerNutzer': 'true' }";
     }
 
     public static String poolWarteRaum(String body) {
