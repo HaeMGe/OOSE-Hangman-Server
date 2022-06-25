@@ -133,9 +133,14 @@ public class RespClass {
         String nutzerName = jObj.get("name").toString();
         nutzerName = nutzerName.replace("\"", "");
         System.out.println(nutzerName);
+        for(Nutzer n : Main.nutzerListe){
+            if(n.getName().equals(nutzerName)){
+                return "{ false }";
+            }
+        }
         Nutzer neuerNutzer = new Nutzer(nutzerName);
         Main.nutzerListe.add(neuerNutzer);
-        return "{ Ihr Name wurde im System gespeichert. Sie koennen jetzt loslegen! }";
+        return "{ true }";
     }
 
     public static String poolWarteRaum(String body) {
