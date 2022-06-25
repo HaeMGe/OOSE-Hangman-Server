@@ -13,6 +13,15 @@ public class Main {
     public static String[] woerter = {"Hallo", "Loesung", "Wort", "Moneymaker", "Niere", "Hangman"};
     public static void main(String[] args) {
 
+        //Das ist für mich, weil mein Laptop bissle lost ist :D
+        System.err.println("Einmal Enter drücken für Start");
+        Scanner sc = new Scanner(System.in);
+        String port = sc.next();
+
+        if(port.equals("true")){
+            System.err.println("Port geändert");
+            port(5741);
+        }
 
         post("/games/hangman/start", (q, a) -> "{ 'text' : 'Herzlich Willkommen vom Server!' }");
         post("/games/hangman/start/neuerNutzer", (q, a) -> { return RespClass.neuerNutzer(q.body());});
@@ -39,14 +48,16 @@ public class Main {
 
         post("/games/hangman/start/lobby",(q, a)-> LogikIntern.lobby(q.body()));
 
+    while(true) {
+        sc = new Scanner(System.in);
+        String eingabe = sc.next();
 
-        //Das ist für mich, weil mein Laptop bissle lost ist :D
-        Scanner sc = new Scanner(System.in);
-        String port = sc.next();
-
-        if(port.equals("true")){
-            port(5741);
-        }
+        if (eingabe.equals("s") || eingabe.equals("stop")) {
+            System.err.println("---Server gestoppt---");
+            stop();
+            break;
+    }
+}
 
 
        // get("/games/hangman/start/loesen","application/json", ((request, response) -> {
