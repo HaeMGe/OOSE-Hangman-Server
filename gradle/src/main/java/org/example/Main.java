@@ -12,6 +12,12 @@ public class Main {
     public static ArrayList<Nutzer> warteraum = new ArrayList<>();
     public static String[] woerter = {"Hallo", "Loesung", "Wort", "Moneymaker", "Niere", "Hangman"};
     public static void main(String[] args) {
+        Nutzer init = new Nutzer("init");
+        Main.nutzerListe.add(init);
+        //nur zum Testen
+        Pool poolTest = new Pool(init, 1, 123);
+        RespClass.poolWarteRaum("{ 'poolID':"+123+" }");
+
 
 
         post("/games/hangman/start", (q, a) -> "{ 'text' : 'Herzlich Willkommen vom Server!' }");
@@ -26,7 +32,8 @@ public class Main {
 
         //Menueoptionen
         post("/games/hangman/start/neuerPool/", (q, a) -> { return RespClass.neuerPool(q.body());}); //neuen Pool anlegen
-        post("/games/hangman/start/poolSuchen/", (q, a) ->  { return RespClass.getPools();});  //Pools schicken
+        post("/games/hangman/start/poolSuchen/", (q, a) ->  { return RespClass.getPools();});  // alle Pools schicken
+        post("/games/hangman/start/meinePools/", (q, a) ->  { return RespClass.meinePools(q.body());});  //individuelle Pools schicken
         post("/games/hangman/start/beitreten/", (q, a) ->  {return RespClass.poolBeitreten(q.body());});  //Pools beitreten
 
         //WarteRaum im Pool

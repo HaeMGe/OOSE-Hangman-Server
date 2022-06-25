@@ -40,6 +40,6 @@ public class Pool {
 
 
     public String toString(){
-        return "ID: " + id + " Nummer in Liste: " + Main.poolListe.indexOf(this) + ", Schwierigkeit: " + level + "Mitgliederzahl: " + mitglieder.size();
+        return "ID: " + id + " Nummer in Liste: " + Main.poolListe.indexOf(this) + ", Schwierigkeit: " + level + " Mitgliederzahl: " + anzahlSpieler();
     }
 }

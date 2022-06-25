@@ -152,7 +152,10 @@ public class RespClass {
             }
         }
 
+        System.out.println(poolAktuell);
+        assert poolAktuell != null;
         if(poolAktuell.anzahlSpieler() == 2){
+            System.out.println("hier");
             return "{true}";
         }else{
             return "{false}";
@@ -167,6 +170,28 @@ public class RespClass {
     public static String anfang(String body) {
         //gibt zurück ob der spieler anfängt oder nicht
         return "";
+    }
+
+    public static String meinePools(String body) {
+        JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
+        String nutzerName = jObj.get("name").toString();
+        nutzerName = nutzerName.replace("\"", "");
+
+        //Spieler in Liste finden
+        Nutzer neuerSpieler =  null;
+        for(Nutzer n: Main.nutzerListe){
+            if(n.getName().equals(nutzerName)){
+                neuerSpieler = n;
+            }
+        }
+        System.out.println(neuerSpieler);
+        StringBuilder s = new StringBuilder();
+        for(Pool p: Main.poolListe){
+            if(p.mitglieder.contains(neuerSpieler)){
+                s.append(p);
+            }
+        }
+        return s.toString();
     }
 }
 
