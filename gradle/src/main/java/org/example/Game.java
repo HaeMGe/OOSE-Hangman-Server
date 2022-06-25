@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-public class Game {
+public class Game implements IGame{
     String geheimesWort;  //zu erraten
     final int leben = 10;   //Anzahl leben
     ArrayList<Character> fehlversuche = new ArrayList<Character>();  //Buchstaben aus falschen Rateversuchen
@@ -19,25 +19,16 @@ public class Game {
 
 
     public Game(int level) {
-      //  members.add(initiator);   //Initiator ist automatisch im Pool
         this.schierigkeitsgrad = level;  //Schwierigkeitgrad von Spiel
-
         this.geheimesWort = this.getRaetsel();   //neues Wort für Spiel
         this.erraten = new Character[geheimesWort.length()];  //erratenes Wort muss richtige Länge haben
         Arrays.fill(erraten,  "0".charAt(0));  //alle Felder mit "0" ausfüllen
-
     }
 
 
-    public void start(ArrayList<Nutzer> nutzerliste) {
-        for(Nutzer n: nutzerliste) {
-            String eingabe = n.buchstabeRaten();
-        }
-
-    }
 
     public String getFehlversuche(){
-        return "Buchstaben, die nicht oder nicht mehr zum Wort gehoeren: " + this.fehlversuche;
+        return this.fehlversuche.toString();
     }
 
     public boolean erraten(){
@@ -61,7 +52,6 @@ public class Game {
 
 
     public boolean rateVersuchChar(Character buchstabe, Nutzer spieler) {
-
         for (int i = 0; i < geheimesWort.length(); i++) {
             if (buchstabe.equals(geheimesWort.charAt(i))) {  //Buchstabe im Wort
                 if (!erraten[i].equals(buchstabe)) { //noch nicht bisher erraten

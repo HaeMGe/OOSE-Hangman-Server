@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Pool {
     Game spiel; //zugehoeriges Spiel
-    ArrayList<Nutzer> mitglieder = new ArrayList<>();
-    int level;
+    ArrayList<Nutzer> mitglieder = new ArrayList<>();  //1 oder 2 Spieler
+    int level;  //Schwierigkeitsgrad: 1, 2, 3, 4
 
-    int id;
+    int id;  //selbst gewählter Integer
 
     //Nutzer eröffnet Pool unter Angabe von Schwierigkeit
     public Pool(Nutzer initiator, int level, int id){
