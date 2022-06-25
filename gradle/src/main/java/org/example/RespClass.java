@@ -138,6 +138,12 @@ public class RespClass {
         return "{ 'neuerNutzer': 'true' }";
     }
 
+    /**
+     * Die Methode gibt auf Anfrage vom Client zurück, ob der Pool 2 Spieler hat, damit das Spiel beginnen kann
+     * Der Client ruft diese Methode einmal pro Sekunde uaf, bis ein Gegner dem Pool beitritt
+     * @param body poolID, um zu überprüfen ob 2 Spieler in dem Pool sind
+     * @return boolean, welcher angibt, ob nun ein Gegner in dem Pool ist und das Spiel gestartet werden kann oder nicht
+     */
     public static String poolWarteRaum(String body) {
 
         JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
@@ -145,6 +151,7 @@ public class RespClass {
         poolID = poolID.replace("\"", "");
         int poolID2 = Integer.parseInt(poolID);
 
+        //Sucht den entsprechenden Pool raus
         Pool poolAktuell = null;
         for(Pool p : Main.poolListe) {
             if (p.id == poolID2) {
@@ -152,10 +159,9 @@ public class RespClass {
             }
         }
 
-        System.out.println(poolAktuell);
         assert poolAktuell != null;
+        //Prüft, ob 2 Leute in dem Pool sind, damit das Spiel beginnen kann
         if(poolAktuell.anzahlSpieler() == 2){
-            System.out.println("hier");
             return "{true}";
         }else{
             return "{false}";
