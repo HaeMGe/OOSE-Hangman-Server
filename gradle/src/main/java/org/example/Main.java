@@ -1,6 +1,8 @@
 package org.example;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import static spark.Spark.*;
 
@@ -38,6 +40,29 @@ public class Main {
         post("/games/hangman/start/lobby",(q, a)-> LogikIntern.lobby(q.body()));
 
 
+        //Das ist für mich, weil mein Laptop bissle lost ist :D
+        Scanner sc = new Scanner(System.in);
+        String port = sc.next();
+
+        if(port.equals("true")){
+            port(5741);
+        }
+
+
+       // get("/games/hangman/start/loesen","application/json", ((request, response) -> {
+          //  response.type("application/json");
+
+        //    return  request.params(":id");
+    //    }));
+
+
+        //Versuch:
+
+
+      //  Nutzer user1 = new Nutzer("Nutzer1", "2342");
+      //  Nutzer user2 = new Nutzer("Nutzer2", "444");
+
+       // Spiel spiel = new Spiel(user1, user2, 1);
     }
 
 
