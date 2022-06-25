@@ -26,7 +26,7 @@ public class Pool {
     }
 
 
-    public boolean startGame(){
+   /** public boolean startGame(){
         if(mitglieder.size()>=2){
             this.spiel.start(mitglieder);  //Neues Spiel starten
             return true;
@@ -36,6 +36,7 @@ public class Pool {
             return false;
         }
     }
+    */
 
 
     public String toString(){

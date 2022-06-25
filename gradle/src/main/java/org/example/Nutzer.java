@@ -15,7 +15,7 @@ public class Nutzer{
     String name;
     int punkte;  //Punktestand eines Nutzers
 
-    Spiel spielAktuell;
+    Game spielAktuell;
     int leben;  //Leben im aktuellen Spiel
     int strafe;  //Strafen im akutellen Spiel (falsches Wort erraten)
 
@@ -41,7 +41,7 @@ public class Nutzer{
 
 
 
-
+/**
     public String start(int schwierigkeit){
         String ergebnis = start(1, schwierigkeit);
         return ergebnis;
@@ -60,7 +60,7 @@ public class Nutzer{
             }
         }
         if(Main.warteraum.get(0) == this){    //ist erste oder zweite Person der Nutzer im Warteraum?
-            Spiel neuesSpiel = new Spiel(this , warteraum.get(1), schwierigkeit);
+            Game neuesSpiel = new Game(this , warteraum.get(1), schwierigkeit);
             this.spielAktuell = neuesSpiel;  //Nutzer das Spiel zuweisen
             warteraum.get(1).spielAktuell = neuesSpiel;  //Gegner das Spiel zuweisen
             warteraum.remove(this);   //Spieler aus Warteraum entfernen
@@ -69,7 +69,7 @@ public class Nutzer{
             return "Dein Gegner: " + gegner;   //Gegner zurückliefern
         }
         else {
-            Spiel neuesSpiel = new Spiel(this, warteraum.get(0), schwierigkeit);
+            Game neuesSpiel = new Game(this, warteraum.get(0), schwierigkeit);
             this.spielAktuell = neuesSpiel;
             warteraum.get(0).spielAktuell = neuesSpiel;
             Nutzer gegner = warteraum.get(0);
@@ -78,6 +78,7 @@ public class Nutzer{
             return "Dein Gegner: " + gegner;
         }
     }
+
 
     public static void startAnmeldungWarteraum(String name, int schwierigkeit){
         for(Nutzer nutzer: Main.nutzerListe){
@@ -97,6 +98,7 @@ public class Nutzer{
         }
         return null;
     }
+    */
     public String buchstabeRaten(){ //wird von Client an Server gesendet
         System.out.println("Ihr Buchstabenversuch:");
         String c = sc.next();
