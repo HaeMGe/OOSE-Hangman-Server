@@ -51,7 +51,7 @@ public class Game implements IGame{
 
         int leben = n.leben;
 
-        return"'erraten':'"+getErraten()+"','leben':"+leben+"','spielVorbei':'"+erraten()+"','fehlversuche':'"+getFehlversuche()+"'";
+        return"'erraten':'"+getErraten()+"','leben':'"+leben+"','spielVorbei':'"+erraten()+"','fehlversuche':'"+getFehlversuche()+"'";
     }
 
     public boolean istAmZug(String name){

@@ -170,6 +170,7 @@ public class RespClass {
 
     public static String status(String body) {
         //fürs polling, gibt alle infos zum spiel
+        System.out.println(body);
 
         JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
         String name = jObj.get("name").toString();
@@ -192,7 +193,7 @@ public class RespClass {
         String statusText = poolAktuell.spiel.spielStatus(name);
 
 
-
+        System.out.println("{'amZug':'"+amZug+"',"+statusText+"}");
         return "{'amZug':'"+amZug+"',"+statusText+"}";
     }
 
