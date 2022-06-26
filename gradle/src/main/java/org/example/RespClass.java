@@ -108,7 +108,7 @@ public class RespClass {
         if(neuerSpieler!=null && poolAktuell != null){
 
             //Ist Nutzer bereits im Pool?
-            for(Nutzer n: poolAktuell.mitglieder) {
+            for(Nutzer n: poolAktuell.spiel.members) {
                 if (n.getName().equals(neuerSpieler.getName())) {
                     System.out.println(n.getName());
                     System.out.println(neuerSpieler.getName());
@@ -117,7 +117,7 @@ public class RespClass {
             }
 
             if(poolAktuell.anzahlSpieler() !=2){
-                poolAktuell.mitglieder.add(neuerSpieler);  //Spieler dem Pool hinzufügen
+                poolAktuell.spiel.members.add(neuerSpieler);  //Spieler dem Pool hinzufügen
                 return "{ Erfolg: " + true+ "}";
             }else{
                 return "{ Erfolg: " + false+ "}";
@@ -170,7 +170,30 @@ public class RespClass {
 
     public static String status(String body) {
         //fürs polling, gibt alle infos zum spiel
-        return "";
+
+        JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
+        String name = jObj.get("name").toString();
+        name = name.replace("\"", "");
+
+        String poolID = jObj.get("poolID").toString();
+        poolID = poolID.replace("\"", "");
+        int poolID2 = Integer.parseInt(poolID);
+
+        //Sucht den entsprechenden Pool raus
+        Pool poolAktuell = null;
+        for(Pool p : Main.poolListe) {
+            if (p.id == poolID2) {
+                poolAktuell = p;
+            }
+        }
+
+        boolean amZug = poolAktuell.spiel.istAmZug(name);
+
+        String statusText = poolAktuell.spiel.spielStatus(name);
+
+
+
+        return "{'amZug':'"+amZug+"',"+statusText+"}";
     }
 
     /**
@@ -196,7 +219,7 @@ public class RespClass {
         }
 
         //Der erste Nutzer in der Liste vom Pool (der Nutzer der den pool erstellt hat im endeffekt) darf anfangen
-        if(poolAktuell.mitglieder.get(0).getName().equals(name)){
+        if(poolAktuell.spiel.members.get(0).getName().equals(name)){
             return "{'anfang':'true'}";
         }else{
             return "{'anfang':'false'}";
@@ -218,11 +241,15 @@ public class RespClass {
         System.out.println(neuerSpieler);
         StringBuilder s = new StringBuilder();
         for(Pool p: Main.poolListe){
-            if(p.mitglieder.contains(neuerSpieler)){
+            if(p.spiel.members.contains(neuerSpieler)){
                 s.append(p);
             }
         }
         return s.toString();
+    }
+
+    public static String wortRaten(String body) {
+        return "";
     }
 }
 
