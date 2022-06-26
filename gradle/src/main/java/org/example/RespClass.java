@@ -29,6 +29,12 @@ public class RespClass {
         System.out.println(zeichen);
         System.out.println("nach zeichen");
 
+        if(poolAktuell.spiel.amZugIndex ==1){
+            poolAktuell.spiel.amZugIndex =0;
+        }else{
+            poolAktuell.spiel.amZugIndex =1;
+        }
+
         boolean erfolg = poolAktuell.spiel.rateVersuchChar(zeichen.charAt(0), spieler);
         return "{" + erfolg + "}";
     }
