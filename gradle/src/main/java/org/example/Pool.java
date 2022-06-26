@@ -16,6 +16,7 @@ public class Pool {
        this.spiel = new Game(level);  //Neues Spiel mit richtigem Schwierigkeitsgrad erschaffen
         Main.poolListe.add(this); //Zur Poolliste hinzufügen
         spiel.members.add(initiator);
+        initiator.leben = 10;
     }
     public void newGame(){
         this.spiel = new Game(level);  //neues Spiel mit Pool assoziieren

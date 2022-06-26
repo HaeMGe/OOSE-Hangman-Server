@@ -10,34 +10,55 @@ public class RespClass {
         JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
         String nutzerName = jObj.get("name").toString();
         nutzerName = nutzerName.replace("\"", "");
-        for(Nutzer n: Main.nutzerListe){
-            if(n.getName().equals(nutzerName)){
+
+        String poolString = jObj.get("pool").toString();
+        poolString = poolString.replace("\"", "");
+
+        int poolID = Integer.parseInt(poolString);
+
+        Pool p = null;
+
+        for (Pool l : Main.poolListe) {
+            if (l.id == poolID) {
+                p = l;
+            }
+        }
+
+        assert p != null;
+        for (Nutzer n : p.spiel.members) {
+            if (n.getName().equals(nutzerName)) {
                 spieler = n;
             }
-            else return "Spieler nicht vorhanden";
-        }
-        System.out.println("nach nutzer");
-        String poolNr = jObj.get("pool").toString();
-        poolNr = poolNr.replace("\"", "");
-        int pool = Integer.parseInt(poolNr);  //Poolnr
-        System.out.println("in pool");
-        Pool poolAktuell = Main.poolListe.get(pool);
-        System.out.println("nach Pool");
-
-        String zeichen = jObj.get("zeichen").toString();
-        zeichen = zeichen.replace("\"", "");
-        System.out.println(zeichen);
-        System.out.println("nach zeichen");
-
-        if(poolAktuell.spiel.amZugIndex ==1){
-            poolAktuell.spiel.amZugIndex =0;
-        }else{
-            poolAktuell.spiel.amZugIndex =1;
         }
 
-        boolean erfolg = poolAktuell.spiel.rateVersuchChar(zeichen.charAt(0), spieler);
-        return "{" + erfolg + "}";
-    }
+            if(spieler ==null){
+                System.err.println("Spieler nicht vorhanden");
+                return "Spieler nicht vorhanden";
+            }
+            System.out.println("nach nutzer");
+            String poolNr = jObj.get("pool").toString();
+            poolNr = poolNr.replace("\"", "");
+            int pool = Integer.parseInt(poolNr);  //Poolnr
+
+
+            System.out.println("nach Pool");
+
+            String zeichen = jObj.get("zeichen").toString();
+            zeichen = zeichen.replace("\"", "");
+            System.out.println(zeichen);
+            System.out.println("nach zeichen");
+
+            if (p.spiel.amZugIndex == 1) {
+                p.spiel.amZugIndex = 0;
+            } else {
+                p.spiel.amZugIndex = 1;
+            }
+            System.err.println(p.spiel.amZugIndex);
+
+            boolean erfolg = p.spiel.rateVersuchChar(zeichen.charAt(0), spieler);
+            return "{" + erfolg + "}";
+        }
+
 
     public static boolean neuerPool(String body) {
         System.out.println(body);
@@ -194,12 +215,12 @@ public class RespClass {
             }
         }
 
+        assert poolAktuell != null;
         boolean amZug = poolAktuell.spiel.istAmZug(name);
 
         String statusText = poolAktuell.spiel.spielStatus(name);
 
 
-        System.out.println("{'amZug':'"+amZug+"',"+statusText+"}");
         return "{'amZug':'"+amZug+"',"+statusText+"}";
     }
 
