@@ -26,7 +26,7 @@ public class Main {
 
         //Rateversuche
         post("/games/hangman/start/neuesWort/0", (q, a) -> {return RespClass.buchstabeRaten(q.body());});  //Buchstabe raten
-        post("/games/hangman/start/neuesWort/1", (q, a) -> "{ Wort angekommen! }");  //Wort raten
+        post("/games/hangman/start/neuesWort/1", (q, a) -> {return RespClass.wortRaten(q.body());});  //Wort raten
 
 
         //Menueoptionen

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Pool {
     Game spiel; //zugehoeriges Spiel
-    ArrayList<Nutzer> mitglieder = new ArrayList<>();  //1 oder 2 Spieler
+    //ArrayList<Nutzer> mitglieder = new ArrayList<>();  //1 oder 2 Spieler
     int level;  //Schwierigkeitsgrad: 1, 2, 3, 4
 
     int id;  //selbst gewählter Integer
@@ -15,14 +15,14 @@ public class Pool {
         this.level = level;
        this.spiel = new Game(level);  //Neues Spiel mit richtigem Schwierigkeitsgrad erschaffen
         Main.poolListe.add(this); //Zur Poolliste hinzufügen
-        mitglieder.add(initiator);
+        spiel.members.add(initiator);
     }
     public void newGame(){
         this.spiel = new Game(level);  //neues Spiel mit Pool assoziieren
     }
 
     public int anzahlSpieler(){
-        return mitglieder.size();
+        return spiel.members.size();
     }
 
 
