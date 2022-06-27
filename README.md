@@ -21,12 +21,12 @@ Spielregeln:
      --> Level 3: 15 Punkte
      --> Level 4: 20 Punkte
 
-- die Punkte werden für jeden Nutzer gespeichert und nach jedem Spiel aufaddiert
+
 
 
 
 - Ablauf des Spiels: 
-- --> ein Spieler kann einen Pool eröffnen mit einem vordefinierten Schwierigkeitsgead. Andere User können dann einem Pool beitreten
+- --> ein Spieler kann einen Pool eröffnen mit einem vordefinierten Schwierigkeitsgrad. Andere User können dann einem Pool beitreten
 und mitspielen
   --> bei jedem Spiel wird aus einem gespeicherten Pool aus Wörtern eines zufällig ausgewählt und die Anzahl an Buchstaben den beiden Spielern mitgeteilt
   --> beide Spieler wechseln sich immer ab mit dem Erraten eines Buchstabens oder eines ganzen Wortes
@@ -44,7 +44,8 @@ Spark Server
 
 
 Paths und deren Beschreibung:
-
+Pfad und Funktion: 
+/games/hangman/start/neuerNutzer    -->Daten zu neuem Nutzer werden von Client an Server gesendet. Ein neuer Nutzer wird angelegt
 
 
 
