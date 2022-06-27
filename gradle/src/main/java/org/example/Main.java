@@ -10,7 +10,7 @@ public class Main {
    static  ArrayList<Pool> poolListe = new ArrayList<>();
     public static ArrayList<Nutzer> nutzerListe = new ArrayList<>();
     public static ArrayList<Nutzer> warteraum = new ArrayList<>();
-    public static String[] woerter = {"Hallo", "Loesung", "Wort", "Moneymaker", "Niere", "Hangman"};
+    public static String[] woerter = {"Hallo", "Loesung", "Wort", "Moneymaker", "Niere", "Hangman","Schmetterling","Teppich","Regen","Tiger","Fahrrad","Dreieck","Wolke","Pinguin","Astronaut"};
     public static void main(String[] args) {
         Nutzer init = new Nutzer("init");
         Main.nutzerListe.add(init);
