@@ -110,12 +110,12 @@ public class Game implements IGame{
 
     public String getRaetsel(){
         Random random = new Random();
-        int zahl = random.nextInt() % Main.woerter.length;  //Zufallszahl aus Intervall von Wörterarray generieren
+        int zahl = random.nextInt() % Main.woerter.size();  //Zufallszahl aus Intervall von Wörterarray generieren
         zahl = Math.abs(zahl);
         //System.out.println(Main.woerter.length);
         //System.out.println(zahl);
-        System.out.println("Das zu erratende Wort für den Pool ist: "+Main.woerter[zahl]);
-        return Main.woerter[zahl];   //Wort zurückgeben
+        System.out.println("Das zu erratende Wort für den Pool ist: "+Main.woerter.get(zahl));
+        return Main.woerter.get(zahl);   //Wort zurückgeben
     }
 
     public String toString(){

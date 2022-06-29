@@ -1,7 +1,11 @@
 package org.example;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import static spark.Spark.*;
@@ -10,8 +14,18 @@ public class Main {
    static  ArrayList<Pool> poolListe = new ArrayList<>();
     public static ArrayList<Nutzer> nutzerListe = new ArrayList<>();
     public static ArrayList<Nutzer> warteraum = new ArrayList<>();
-    public static String[] woerter = {"Hallo", "Loesung", "Wort", "Moneymaker", "Niere", "Hangman","Schmetterling","Teppich","Regen","Tiger","Fahrrad","Dreieck","Wolke","Pinguin","Astronaut"};
-    public static void main(String[] args) {
+    //public static String[] woerter = {"Hallo", "Loesung", "Wort", "Moneymaker", "Niere", "Hangman","Schmetterling","Teppich","Regen","Tiger","Fahrrad","Dreieck","Wolke","Pinguin","Astronaut"};
+
+    public static List<String> woerter;
+
+    public static void main(String[] args) throws IOException {
+
+
+        woerter = Files.readAllLines(Paths.get("C:\\Users\\Tuhin Thodeme\\IdeaProjects\\hangmanserver\\gradle\\src\\main\\java\\org\\example\\woerter.txt"));
+
+        //System.out.println(content);
+
+
         Nutzer init = new Nutzer("init");
         Main.nutzerListe.add(init);
         //nur zum Testen
