@@ -20,7 +20,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-
+        //1000 wörter oder so aus der .txt datei in liste tun
         woerter = Files.readAllLines(Paths.get("C:\\Users\\Tuhin Thodeme\\IdeaProjects\\hangmanserver\\gradle\\src\\main\\java\\org\\example\\woerter.txt"));
 
         //System.out.println(content);
