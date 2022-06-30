@@ -154,14 +154,30 @@ public class RespClass {
         return " ende ";
     }
 
-
+    /**
+     * Erstellt den neuen Nutzer, falls es noch keinen mit demselben Namen gibt
+     * @param body Name  des zu neuen erstellenden Nutzers als JSON
+     * @return gibt zurück, ob der neue Nutzer erstell werden konnte
+     */
     public static String neuerNutzer(String body) {
+
+        //Holt Name aus der JSON
         JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
         String nutzerName = jObj.get("name").toString();
         nutzerName = nutzerName.replace("\"", "");
-        System.out.println(nutzerName);
+
+        for(Nutzer n : Main.nutzerListe){
+            if(n.getName().equals(nutzerName)){
+                System.out.println("Fehler, "+nutzerName+" existiert schon");
+                return "{ 'neuerNutzer': 'false' }";
+            }
+        }
+
         Nutzer neuerNutzer = new Nutzer(nutzerName);
+        //Fügt den neuen Nutzer in die Nutzerliste ein
         Main.nutzerListe.add(neuerNutzer);
+        System.out.println("Nutzer :"+nutzerName+" erstellt");
+
         return "{ 'neuerNutzer': 'true' }";
     }
 
