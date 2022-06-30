@@ -166,6 +166,7 @@ public class RespClass {
         String nutzerName = jObj.get("name").toString();
         nutzerName = nutzerName.replace("\"", "");
 
+        //Überprüfung, ob es nicht schon einen Nutzer mit demselben nutzernamen gibt
         for(Nutzer n : Main.nutzerListe){
             if(n.getName().equals(nutzerName)){
                 System.out.println("Fehler, "+nutzerName+" existiert schon");
