@@ -195,10 +195,17 @@ public class RespClass {
         }
     }
 
+    /**
+     * Gibt dem Client alle relevanten Informationen zu dem Spiel zurück, wird 1x die Sekunde vom Client erzeugt.
+     * @param body Name und PoolID des Nutzers werden übergeben
+     * @return gibt zurück, ob der Nutzer am Zug ist, die Anzahl der Leben,
+     * die Menge der falschen Eingaben,
+     * ob das Spiel vorbei ist und was erraten wurde
+     */
     public static String status(String body) {
-        //fürs polling, gibt alle infos zum spiel
         System.out.println(body);
 
+        //Holt name und PoolID aus der JSON raus
         JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
         String name = jObj.get("name").toString();
         name = name.replace("\"", "");
@@ -216,10 +223,11 @@ public class RespClass {
         }
 
         assert poolAktuell != null;
+        //Gibt zurück, ob der Nutzer am Zug ist
         boolean amZug = poolAktuell.spiel.istAmZug(name);
 
+        //Gibt den Rest des StatusText zurück, ink. anzahl Leben, falsche Eingaben, richtige Eingaben, ob das Spiel vorbei ist
         String statusText = poolAktuell.spiel.spielStatus(name);
-
 
         return "{'amZug':'"+amZug+"',"+statusText+"}";
     }
