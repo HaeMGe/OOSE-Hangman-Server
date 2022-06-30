@@ -23,7 +23,7 @@ public class Main {
         //1000 wörter oder so aus der .txt datei in liste tun
         woerter = Files.readAllLines(Paths.get("C:\\Users\\Tuhin Thodeme\\IdeaProjects\\hangmanserver\\gradle\\src\\main\\java\\org\\example\\woerter.txt"));
 
-        //System.out.println(content);
+        System.out.println(woerter);
 
 
         Nutzer init = new Nutzer("init");

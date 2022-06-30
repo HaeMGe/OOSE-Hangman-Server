@@ -256,6 +256,7 @@ public class RespClass {
      */
     public static String anfang(String body) {
 
+        //PoolID und Name werden aus der JSON rausgeholt
         JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
         String poolID = jObj.get("poolID").toString();
         poolID = poolID.replace("\"", "");
@@ -264,11 +265,18 @@ public class RespClass {
         String name = jObj.get("name").toString();
         name = name.replace("\"", "");
 
+        //Der Pool wird rausgesucht
         Pool poolAktuell = null;
         for(Pool p : Main.poolListe) {
             if (p.id == poolID2) {
                 poolAktuell = p;
             }
+        }
+
+        //Prüft ob der Pool überhaupt existiert
+        if(poolAktuell==null){
+            System.err.println("Fehler beim aufruufen des Pools");
+            return "{'anfang':'false'}";
         }
 
         //Der erste Nutzer in der Liste vom Pool (der Nutzer der den pool erstellt hat im endeffekt) darf anfangen
