@@ -25,7 +25,7 @@ public class Main {
 
         System.out.println(woerter);
 
-        port(5741);
+        //port(5741);
 
         Nutzer init = new Nutzer("init");
         Main.nutzerListe.add(init);
