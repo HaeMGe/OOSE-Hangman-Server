@@ -29,7 +29,6 @@ public class Main {
     ;
 
     public static void main(String[] args) throws IOException {
-        post("/games/hangman/tests", (q, a) -> { return 0;});
 
         post("/games/hangman/start/neuerNutzer", (q, a) -> { return RespClass.neuerNutzer(q.body());});
 
