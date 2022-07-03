@@ -18,23 +18,19 @@ public class Main {
 
     public static List<String> woerter;
 
+    static {
+        try {
+            woerter = Files.readAllLines(Paths.get("gradle/src/main/java/org/example/woerter.txt"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    ;
+
     public static void main(String[] args) throws IOException {
 
-        //1000 wörter oder so aus der .txt datei in liste tun
-        woerter = Files.readAllLines(Paths.get("gradle/src/main/java/org/example/woerter.txt"));
 
-        System.out.println(woerter);
-
-        //port(5741);
-
-        Nutzer init = new Nutzer("init");
-        Main.nutzerListe.add(init);
-        //nur zum Testen
-        Pool poolTest = new Pool(init, 1, 123);
-        RespClass.poolWarteRaum("{ 'poolID':"+123+" }");
-
-
-        post("/games/hangman/start", (q, a) -> "{ 'text' : 'Herzlich Willkommen vom Server!' }");
         post("/games/hangman/start/neuerNutzer", (q, a) -> { return RespClass.neuerNutzer(q.body());});
 
 
@@ -58,7 +54,7 @@ public class Main {
         //Abfrage , wer als erstes anfangen darf
         post("/games/hangman/start/spiel/anfang", (q,a) -> {return RespClass.anfang(q.body());});
 
-        post("/games/hangman/start/lobby",(q, a)-> LogikIntern.lobby(q.body()));
+      //  post("/games/hangman/start/lobby",(q, a)-> LogikIntern.lobby(q.body()));
 
         Scanner sc = new Scanner(System.in);
     while(true) {

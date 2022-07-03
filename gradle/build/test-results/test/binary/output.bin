@@ -1,6 +1,1 @@
-6
-4
-
-Eingabe fuer nutzer1 Punkte: 0
-5Bisheriger Zustand Ihrer Lösung: Teillösung: _____
-Ihr Buchstabenversuch:
+uResponse{protocol=http/1.1, code=404, message=Not Found, url=http://localhost:4567/games/hangman/start/neuerNutzer}

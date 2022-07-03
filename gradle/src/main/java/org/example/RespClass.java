@@ -161,6 +161,7 @@ public class RespClass {
      */
     public static String neuerNutzer(String body) {
 
+        System.out.println("Neuen Nutzer anlegen");
         //Holt Name aus der JSON
         JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
         String nutzerName = jObj.get("name").toString();

@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 
 public class LogikIntern {
 
-    public static String lobby(String body) {
+  /**  public static String lobby(String body) {
         JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
         String nutzerName = jObj.get("name").toString();
         nutzerName = nutzerName.replace("\"", "");
@@ -25,7 +25,7 @@ public class LogikIntern {
     }
 
 
-
+*/
 
 
 }

@@ -18,26 +18,12 @@ public class Pool {
         spiel.members.add(initiator);
         initiator.leben = 10;
     }
-    public void newGame(){
-        this.spiel = new Game(level);  //neues Spiel mit Pool assoziieren
-    }
+
 
     public int anzahlSpieler(){
         return spiel.members.size();
     }
 
-
-   /** public boolean startGame(){
-        if(mitglieder.size()>=2){
-            this.spiel.start(mitglieder);  //Neues Spiel starten
-            return true;
-        }
-        else {
-            System.out.println("Nicht genug Menschen da");
-            return false;
-        }
-    }
-    */
 
 
     public String toString(){
