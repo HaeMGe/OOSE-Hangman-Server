@@ -343,6 +343,31 @@ public class RespClass {
         return "{" + erfolg + "}";
     }
 
+
+    public static int PoolLoeschen(String body){
+        JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
+        String poolString = jObj.get("poolID").toString();    //PoolID auslesen
+        poolString = poolString.replace("\"", "");
+
+        int poolID = Integer.parseInt(poolString);   //PoolID zu Integer parsen
+
+
+        //Pool loeschen
+        for (Pool p : Main.poolListe){
+            if(p.id == poolID){
+                Main.poolListe.remove(p);   //Pool aus Poolliste entfernen
+                System.out.println("geloescht");
+                return 0;
+            }
+        }
+        System.out.println("nichtgeloescht");
+        return -1;
+
+
+
+
+
+    }
 }
 
 

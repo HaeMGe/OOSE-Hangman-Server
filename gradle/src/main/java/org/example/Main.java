@@ -53,7 +53,9 @@ public class Main {
         //Abfrage , wer als erstes anfangen darf
         post("/games/hangman/start/spiel/anfang", (q,a) -> {return RespClass.anfang(q.body());});
 
-      //  post("/games/hangman/start/lobby",(q, a)-> LogikIntern.lobby(q.body()));
+        //Pool loeschen, nachdem ein Spiel angefangen hat oder kein Mitspieler gefunden wurde
+        post("/games/hangman/start/spiel/loeschen", (q,a) -> {return RespClass.PoolLoeschen(q.body());});
+
 
         Scanner sc = new Scanner(System.in);
     while(true) {
@@ -65,13 +67,5 @@ public class Main {
             break;
     }
 }
-
-
-       // get("/games/hangman/start/loesen","application/json", ((request, response) -> {
-          //  response.type("application/json");
-
-        //    return  request.params(":id");
-    //    }));
-
     }
 }
