@@ -288,30 +288,61 @@ public class RespClass {
         }
     }
 
-    public static String meinePools(String body) {
+
+
+    public static String wortRaten(String body) {
+        Nutzer spieler = null;
+        System.out.println(body);
         JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
         String nutzerName = jObj.get("name").toString();
         nutzerName = nutzerName.replace("\"", "");
 
-        //Spieler in Liste finden
-        Nutzer neuerSpieler =  null;
-        for(Nutzer n: Main.nutzerListe){
-            if(n.getName().equals(nutzerName)){
-                neuerSpieler = n;
+        String poolString = jObj.get("pool").toString();
+        poolString = poolString.replace("\"", "");
+
+        int poolID = Integer.parseInt(poolString);
+
+        Pool p = null;
+
+        for (Pool l : Main.poolListe) {
+            if (l.id == poolID) {
+                p = l;
             }
         }
-        System.out.println(neuerSpieler);
-        StringBuilder s = new StringBuilder();
-        for(Pool p: Main.poolListe){
-            if(p.spiel.members.contains(neuerSpieler)){
-                s.append(p);
+
+        assert p != null;
+        for (Nutzer n : p.spiel.members) {
+            if (n.getName().equals(nutzerName)) {
+                spieler = n;
             }
         }
-        return s.toString();
+
+        if(spieler ==null){
+            System.err.println("Spieler nicht vorhanden");
+            return "Spieler nicht vorhanden";
+        }
+        String poolNr = jObj.get("pool").toString();
+        poolNr = poolNr.replace("\"", "");
+        int pool = Integer.parseInt(poolNr);  //Poolnr
+
+
+
+        String wort = jObj.get("wort").toString();
+        wort = wort.replace("\"", "");
+        System.out.println(wort);
+
+
+        if (p.spiel.amZugIndex == 1) {
+            p.spiel.amZugIndex = 0;
+        } else {
+            p.spiel.amZugIndex = 1;
+        }
+        System.err.println(p.spiel.amZugIndex);
+
+        boolean erfolg = p.spiel.rateVersuchWort(wort, spieler);
+        return "{" + erfolg + "}";
     }
 
-    public static String wortRaten(String body) {
-        return "";
-    }
 }
+
 

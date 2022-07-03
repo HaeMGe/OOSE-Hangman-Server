@@ -29,9 +29,12 @@ dependencies {
 test {
     useJUnitPlatform()
     dependencies{
-        implementation 'com.squareup.okhttp3:okhttp:3.14.6'
+       // implementation 'com.squareup.okhttp3:okhttp:3.14.6'
         // for v4.x :
-        // implementation 'com.squareup.okhttp3:okhttp:4.3.1'
+       //  implementation 'com.squareup.okhttp3:okhttp:4.3.1'
+
+        // https://mavenlibs.com/maven/dependency/com.squareup.okhttp3/okhttp-testing-support
+        implementation 'com.squareup.okhttp3:okhttp-testing-support:3.12.13'
 
     }
 }

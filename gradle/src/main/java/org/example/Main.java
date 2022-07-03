@@ -29,7 +29,7 @@ public class Main {
     ;
 
     public static void main(String[] args) throws IOException {
-
+        post("/games/hangman/tests", (q, a) -> { return 0;});
 
         post("/games/hangman/start/neuerNutzer", (q, a) -> { return RespClass.neuerNutzer(q.body());});
 
@@ -43,7 +43,7 @@ public class Main {
         //Menueoptionen
         post("/games/hangman/start/neuerPool/", (q, a) -> { return RespClass.neuerPool(q.body());}); //neuen Pool anlegen
         post("/games/hangman/start/poolSuchen/", (q, a) ->  { return RespClass.getPools();});  // alle Pools schicken
-        post("/games/hangman/start/meinePools/", (q, a) ->  { return RespClass.meinePools(q.body());});  //individuelle Pools schicken
+      //  post("/games/hangman/start/meinePools/", (q, a) ->  { return RespClass.meinePools(q.body());});  //individuelle Pools schicken
         post("/games/hangman/start/beitreten/", (q, a) ->  {return RespClass.poolBeitreten(q.body());});  //Pools beitreten
 
         //WarteRaum im Pool
