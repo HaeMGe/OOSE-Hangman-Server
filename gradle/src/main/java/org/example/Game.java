@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Game implements IGame{
     String geheimesWort;  //zu erraten
-    final int leben = 10;   //Anzahl leben
+    int leben;   //Anzahl leben
     ArrayList<Character> fehlversuche = new ArrayList<Character>();  //Buchstaben aus falschen Rateversuchen
     ArrayList<String> fehlversucheWort = new ArrayList<String>();  //Wörter aus falschen Rateversuchen
     Character[] erraten;  //erratene Indizes
@@ -16,8 +16,7 @@ public class Game implements IGame{
     int[] lebenNachSchwierigkeit = {20, 15, 10, 5};    //Leben, Level = Index+1
     boolean fertig; //Ist Wort erraten oder alle Leben weg? --> Spiel beendet
     int amZugIndex; //Gibt an, ob spieler 0 oder 1 am Zug ist
-
-
+    int gewinn;
 
     public Game(int level) {
         this.schierigkeitsgrad = level;  //Schwierigkeitgrad von Spiel
@@ -25,6 +24,8 @@ public class Game implements IGame{
         this.erraten = new Character[geheimesWort.length()];  //erratenes Wort muss richtige Länge haben
         Arrays.fill(erraten,  "0".charAt(0));  //alle Felder mit "0" ausfüllen
         amZugIndex = 0;
+        gewinn = punkteNachSchwierigkeit[schierigkeitsgrad];   //maximaler Gewinn
+        leben = lebenNachSchwierigkeit[schierigkeitsgrad];
     }
 
 
