@@ -35,11 +35,8 @@ public class RespClass {
                 System.err.println("Spieler nicht vorhanden");
                 return "Spieler nicht vorhanden";
             }
-            System.out.println("nach nutzer");
-            String poolNr = jObj.get("pool").toString();
-            poolNr = poolNr.replace("\"", "");
-            int pool = Integer.parseInt(poolNr);  //Poolnr
 
+            System.out.println("nach nutzer");
 
             System.out.println("nach Pool");
 
@@ -282,6 +279,11 @@ public class RespClass {
 
         //Der erste Nutzer in der Liste vom Pool (der Nutzer der den pool erstellt hat im endeffekt) darf anfangen
         if(poolAktuell.spiel.members.get(0).getName().equals(name)){
+
+            //TODO: anpassen, dass die Leben anhand des schwierigkeitsgrades angepasst werden.
+            poolAktuell.spiel.members.get(0).setLeben(10);
+            poolAktuell.spiel.members.get(1).setLeben(10);
+
             return "{'anfang':'true'}";
         }else{
             return "{'anfang':'false'}";
@@ -293,6 +295,7 @@ public class RespClass {
     public static String wortRaten(String body) {
         Nutzer spieler = null;
         System.out.println(body);
+
         JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
         String nutzerName = jObj.get("name").toString();
         nutzerName = nutzerName.replace("\"", "");
@@ -321,11 +324,6 @@ public class RespClass {
             System.err.println("Spieler nicht vorhanden");
             return "Spieler nicht vorhanden";
         }
-        String poolNr = jObj.get("pool").toString();
-        poolNr = poolNr.replace("\"", "");
-        int pool = Integer.parseInt(poolNr);  //Poolnr
-
-
 
         String wort = jObj.get("wort").toString();
         wort = wort.replace("\"", "");
@@ -337,6 +335,7 @@ public class RespClass {
         } else {
             p.spiel.amZugIndex = 1;
         }
+
         System.err.println(p.spiel.amZugIndex);
 
         boolean erfolg = p.spiel.rateVersuchWort(wort, spieler);

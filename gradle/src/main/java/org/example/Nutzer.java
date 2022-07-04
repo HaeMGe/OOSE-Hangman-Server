@@ -33,6 +33,10 @@ public class Nutzer{
         this.punkte = neuerWert;
     }
 
+    public void setLeben(int anzLeben){
+        leben = anzLeben;
+    }
+
     public String buchstabeRaten(){ //wird von Client an Server gesendet
         System.out.println("Ihr Buchstabenversuch:");
         String c = sc.next();
