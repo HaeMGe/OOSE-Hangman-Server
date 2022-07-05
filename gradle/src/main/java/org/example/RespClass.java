@@ -283,9 +283,22 @@ public class RespClass {
         //Der erste Nutzer in der Liste vom Pool (der Nutzer der den pool erstellt hat im endeffekt) darf anfangen
         if(poolAktuell.spiel.members.get(0).getName().equals(name)){
 
-            //TODO: anpassen, dass die Leben anhand des schwierigkeitsgrades angepasst werden.
-            poolAktuell.spiel.members.get(0).setLeben(10);
-            poolAktuell.spiel.members.get(1).setLeben(10);
+            if(poolAktuell.spiel.schierigkeitsgrad == 1){
+                poolAktuell.spiel.members.get(0).setLeben(10);
+                poolAktuell.spiel.members.get(1).setLeben(10);
+            }
+            if(poolAktuell.spiel.schierigkeitsgrad == 2){
+                poolAktuell.spiel.members.get(0).setLeben(8);
+                poolAktuell.spiel.members.get(1).setLeben(8);
+            }
+            if(poolAktuell.spiel.schierigkeitsgrad == 3){
+                poolAktuell.spiel.members.get(0).setLeben(6);
+                poolAktuell.spiel.members.get(1).setLeben(6);
+            }
+            if(poolAktuell.spiel.schierigkeitsgrad == 4){
+                poolAktuell.spiel.members.get(0).setLeben(6);
+                poolAktuell.spiel.members.get(1).setLeben(6);
+            }
 
             return "{'anfang':'true'}";
         }else{
