@@ -18,6 +18,8 @@ public class APITest {
     PostClass posten = new PostClass();
    // neuen Nutzer fuer ein paar Tests anlegen
    String neuerNutzerRequest = posten.doPostRequest(link+"games/hangman/start/neuerNutzer", "{ 'name': '" + "TestNutzer" + "'}");
+    String neuerNutzerRequest2 = posten.doPostRequest(link+"games/hangman/start/neuerNutzer", "{ 'name': '" + "TestNutzer2" + "'}");
+
 
     public APITest() throws IOException {
     }
@@ -64,6 +66,14 @@ void istEinPoolda() throws IOException {
         String antwort = posten.doPostRequest(link+"games/hangman/start/spiel/loeschen", "{ 'poolID': '" + "42" + "'}");  //neuen Postrequest mit Eingabe an Server
         System.out.println(antwort);
         assertEquals("0",antwort);
+    }
+
+    @Test
+    void poolbeitreten() throws IOException {
+        posten.doPostRequest(link+"games/hangman/start/neuerPool/", "{ 'name': '" + "TestNutzer" + "','pool': '" + "100" + "','level': '" + 1 + "'}");
+        String antwort = posten.doPostRequest(link+"games/hangman/start/beitreten/", "{ 'name': '" + "TestNutzer2" + "','pool': '" + "100" + "'}");
+        System.out.println(antwort);
+        assertTrue(antwort.contains("true"));
     }
 
 }

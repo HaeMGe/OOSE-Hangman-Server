@@ -1,3 +1,6 @@
-true
-{ 'neuerNutzer': 'true' }
-{ 'neuerNutzer': 'false' }
+{ Erfolg: true}
+true
+Ž{ID: 100 Nummer in Liste: 0, Schwierigkeit: 1 Mitgliederzahl: 2ID: 42 Nummer in Liste: 1, Schwierigkeit: 1 Mitgliederzahl: 1Vorhanden: false}
+0
+{ 'neuerNutzer': 'true' }
+{ 'neuerNutzer': 'false' }
