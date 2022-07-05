@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.APITest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-07-03T19:42:32" hostname="LAPTOP-4918OAIF" time="0.059">
+  <properties/>
+  <testcase name="neuerPool()" classname="org.example.APITest" time="0.028"/>
+  <testcase name="nochKeinPoolda()" classname="org.example.APITest" time="0.009"/>
+  <testcase name="neuerNutzer()" classname="org.example.APITest" time="0.003"/>
+  <testcase name="neuerNutzerGleicherName()" classname="org.example.APITest" time="0.003"/>
+  <testcase name="neuerPoolGleicheId()" classname="org.example.APITest" time="0.004"/>
+  <system-out><![CDATA[true
+{ 'neuerNutzer': 'true' }
+{ 'neuerNutzer': 'false' }
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
