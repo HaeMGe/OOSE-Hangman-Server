@@ -31,15 +31,14 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         woerter = new ArrayList<String>();
-        //TODO: umlaute eventuell ersetzen
         //Macht alle Buchstaben aus der woerterListe Klein
         for(int i = 0;i<woerterGross.size();i++){
             woerter.add(woerterGross.get(i).toLowerCase());
         }
 
+
+
         post("/games/hangman/start/neuerNutzer", (q, a) -> { return RespClass.neuerNutzer(q.body());});
-
-
 
         //Rateversuche
         post("/games/hangman/start/neuesWort/0", (q, a) -> {return RespClass.buchstabeRaten(q.body());});  //Buchstabe raten
@@ -49,7 +48,8 @@ public class Main {
         //Menueoptionen
         post("/games/hangman/start/neuerPool/", (q, a) -> { return RespClass.neuerPool(q.body());}); //neuen Pool anlegen
         post("/games/hangman/start/poolSuchen/", (q, a) ->  { return RespClass.getPools();});  // alle Pools schicken
-      //  post("/games/hangman/start/meinePools/", (q, a) ->  { return RespClass.meinePools(q.body());});  //individuelle Pools schicken
+
+        //post("/games/hangman/start/meinePools/", (q, a) ->  { return RespClass.meinePools(q.body());});  //individuelle Pools schicken
         post("/games/hangman/start/beitreten/", (q, a) ->  {return RespClass.poolBeitreten(q.body());});  //Pools beitreten
 
         //WarteRaum im Pool
@@ -59,6 +59,9 @@ public class Main {
         post("/games/hangman/start/spiel/status", (q,a) -> {return RespClass.status(q.body());});
         //Abfrage , wer als erstes anfangen darf
         post("/games/hangman/start/spiel/anfang", (q,a) -> {return RespClass.anfang(q.body());});
+
+        //Abfrage, ob Client gewonnen hat oder nicht
+        post("games/hangman/start/spiel/gewonnen",(q,a)->{return RespClass.gewonnen(q.body());});
 
         //Pool loeschen, nachdem ein Spiel angefangen hat oder kein Mitspieler gefunden wurde
         post("/games/hangman/start/spiel/loeschen", (q,a) -> {return RespClass.PoolLoeschen(q.body());});

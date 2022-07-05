@@ -16,7 +16,6 @@ dependencies {
     implementation 'com.sparkjava:spark-core:2.9.3'
     implementation 'com.google.code.gson:gson:2.8.6'
 
-//neu
     implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.3"))
 
     // define any required OkHttp artifacts without version
