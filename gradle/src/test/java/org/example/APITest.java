@@ -2,6 +2,8 @@ package org.example;
 
 
 import org.example.PostTesten.PostClass;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
 
@@ -36,6 +38,7 @@ void neuerNutzerGleicherName() throws IOException {
 @Test
 void istEinPoolda() throws IOException {
     String antwort = posten.doPostRequest(link+"games/hangman/start/poolSuchen/", "pools angefragt");
+    System.out.println(antwort);
     String[] antwortSplit = antwort.split("Vorhanden: ");
     assertTrue(antwortSplit[1].contains("false"));   //es sind bereits Pools im Server, weshalb mit false geantwortet wird
 
@@ -50,9 +53,17 @@ void istEinPoolda() throws IOException {
 
 @Test
     void neuerPoolGleicheId() throws IOException {
+    posten.doPostRequest(link+"games/hangman/start/neuerPool/", "{ 'name': '" + "TestNutzer" + "','pool': '" + "42" + "','level': '" + 1 + "'}");
     String antwort = posten.doPostRequest(link+"games/hangman/start/neuerPool/", "{ 'name': '" + "TestNutzer" + "','pool': '" + "42" + "','level': '" + 1 + "'}");  //neuen Postrequest mit Eingabe an Server
     boolean antwort2 = Boolean.parseBoolean(antwort);
     assertFalse(antwort2);
 }
+
+    @Test
+    void poolLoeschen() throws IOException {
+        String antwort = posten.doPostRequest(link+"games/hangman/start/spiel/loeschen", "{ 'poolID': '" + "42" + "'}");  //neuen Postrequest mit Eingabe an Server
+        System.out.println(antwort);
+        assertEquals("0",antwort);
+    }
 
 }
