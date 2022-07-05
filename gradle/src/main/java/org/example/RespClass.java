@@ -4,143 +4,154 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 public class RespClass {
+    /**
+     * Ein Buchstabe wird vom CLient eingegeben und an den Server geschickt. Hier wird überprüft, ob der Rateversuch korrekt ist.
+     * @param body geratener Buchstabe, Name und Pool des Nutzers bzw Spieles
+     * @return Rückmeldung, ob Versuch erfolgreich --> true, sonst false
+     */
     public static String buchstabeRaten(String body) {
         Nutzer spieler = null;
         System.out.println(body);
         JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
-        String nutzerName = jObj.get("name").toString();
+        String nutzerName = jObj.get("name").toString();   //Name der ratenden Person
         nutzerName = nutzerName.replace("\"", "");
 
-        String poolString = jObj.get("pool").toString();
+        String poolString = jObj.get("pool").toString();   //Pool des zugehörigen Spieles
         poolString = poolString.replace("\"", "");
 
-        int poolID = Integer.parseInt(poolString);
+        int poolID = Integer.parseInt(poolString);   //Pool ID von String zu Integer parsen
 
         Pool p = null;
 
-        for (Pool l : Main.poolListe) {
+        for (Pool l : Main.poolListe) {  //Pool aus der Poolliste finden
             if (l.id == poolID) {
                 p = l;
             }
         }
 
         assert p != null;
-        for (Nutzer n : p.spiel.members) {
+        for (Nutzer n : p.spiel.members) {   //Spieler in Nutzerliste finden
             if (n.getName().equals(nutzerName)) {
                 spieler = n;
             }
         }
 
-            if(spieler ==null){
-                System.err.println("Spieler nicht vorhanden");
-                return "Spieler nicht vorhanden";
-            }
 
-            System.out.println("nach nutzer");
-
-            System.out.println("nach Pool");
-
-            String zeichen = jObj.get("zeichen").toString();
+            String zeichen = jObj.get("zeichen").toString();  //den Rateversuch auslesen
             zeichen = zeichen.replace("\"", "");
-            System.out.println(zeichen);
-            System.out.println("nach zeichen");
 
-            if (p.spiel.amZugIndex == 1) {
+            if (p.spiel.amZugIndex == 1) {   //die beiden Spieler wechseln sich ab mit dem Raten --> amZug-Flag ändern
                 p.spiel.amZugIndex = 0;
             } else {
                 p.spiel.amZugIndex = 1;
             }
             System.err.println(p.spiel.amZugIndex);
 
-            boolean erfolg = p.spiel.rateVersuchChar(zeichen.charAt(0), spieler);
+            boolean erfolg = p.spiel.rateVersuchChar(zeichen.charAt(0), spieler);   //true, wenn Versuch richtig, sonst false
             return "{" + erfolg + "}";
         }
 
 
+    /**
+     * Ein neuer Pool wird angelegt, der Inititator ist sofort Mitglied des Pools.
+     * @param body Initiator, Pool-ID und gewünschter Schwierigkeitsgrad des Spieles
+     * @return true, wenn das Anlegen erfolgreich war, sonst false
+     */
     public static boolean neuerPool(String body) {
         System.out.println(body);
         JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
-        String nutzerName = jObj.get("name").toString();
+        String nutzerName = jObj.get("name").toString();   //Spielername auslesen
         nutzerName = nutzerName.replace("\"", "");
         Nutzer aktuellerNutzer = null;
-        for(Nutzer n: Main.nutzerListe){
+        for(Nutzer n: Main.nutzerListe){   //Spieler in Nutzerliste suchen
             if(n.getName().equals(nutzerName)) {
                 aktuellerNutzer = n;
                 System.out.println(n);
             }
         }
 
-        String poolID = jObj.get("pool").toString();
+        String poolID = jObj.get("pool").toString();   //PoolID auslesen
         poolID = poolID.replace("\"", "");
         int pool = Integer.parseInt(poolID);
         System.out.println(pool);
 
-        String schwierigkeit = jObj.get("level").toString();
+        String schwierigkeit = jObj.get("level").toString();  //Schwierigkeitsgrad auslesen
         schwierigkeit = schwierigkeit.replace("\"", "");
         int level = Integer.parseInt(schwierigkeit);
         System.out.println(level);
 
-        for(Pool p : Main.poolListe) {
+        for(Pool p : Main.poolListe) {   //Überprüfung, ob diese PoolID bereits vergeben ist
             if (p.id == pool){  //id schon vorhanden
                 return false;
             }
         }
+        System.out.println("neuer Pool wird angelegt");
+        //alle Tests bestanden --> neuer Pool kann jetzt angelegt werden
         Pool neuerPool = new Pool(aktuellerNutzer, level, pool);  //alles ok, neuer Pool kann angelegt werden
+        System.out.println("anlegen erfolgt");
         return true;
     }
 
+    /**
+     * Alle Pools, die zur Zeit offen sind, werden dem Client als String geschickt
+     * @return String mit allen Pools und Info, ob es Pools gibt oder nicht --> vorhanden ist true, wenn Liste leer ist, sonst false
+     */
     public static String getPools(){
-        StringBuilder pools = new StringBuilder();
+        StringBuilder pools = new StringBuilder();  //hier werden alle Pools als String aneinander gereiht
         for(Pool p: Main.poolListe){
-            pools.append(p);
+            pools.append(p);  //jeden Pool dem String anhaengen
         }
-        String info = pools.toString();
+        String info = pools.toString();   //StringBuilder --> String
         boolean empty = false;
-        if(Main.poolListe.size()== 0){
+        if(Main.poolListe.size()== 0){   //Gibt es keine Pools?
             empty = true;
         }
         return "{"+info+ "Vorhanden: " + empty+"}";
     }
 
+    /**
+     * Der Nutzer kann einem Pool beitreten, indem die Pool ID ausgewählt wird.
+     * @param body Nutzername und PoolID, die gewaehlt wurde
+     * @return Erfolg: true, wenn Beitritt erfolgreich, sonst false
+     */
     public static String poolBeitreten(String body) {
         JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
-        String nutzerName = jObj.get("name").toString();
+        String nutzerName = jObj.get("name").toString();   //Name auslesen
         nutzerName = nutzerName.replace("\"", "");
 
         //Spieler in Liste finden
         Nutzer neuerSpieler =  null;
-        for(Nutzer n: Main.nutzerListe){
+        for(Nutzer n: Main.nutzerListe){   //nach Spieler in der Nutzerliste suchen
             if(n.getName().equals(nutzerName)){
                 neuerSpieler = n;
             }
         }
 
         //Pool finden
-        String pool = jObj.get("pool").toString();
+        String pool = jObj.get("pool").toString();   //Pool auslesen
         pool = pool.replace("\"", "");
         int pool2 = Integer.parseInt(pool);
 
         Pool poolAktuell = null;
-        for(Pool p : Main.poolListe) {
+        for(Pool p : Main.poolListe) {   //nach aktuellem Pool in der Poolliste suchen
             if (p.id == pool2) {
                 poolAktuell = p;
             }
         }
 
-
-        //Testten, ob Beitritt möglich
-        if(neuerSpieler!=null && poolAktuell != null){
+        //Testen, ob Beitritt möglich
+        if(neuerSpieler!=null && poolAktuell != null){   //wurde ein existierender Pool gewählt?
 
             //Ist Nutzer bereits im Pool?
-            for(Nutzer n: poolAktuell.spiel.members) {
-                if (n.getName().equals(neuerSpieler.getName())) {
-                    System.out.println(n.getName());
-                    System.out.println(neuerSpieler.getName());
+         /**   for(Nutzer n: poolAktuell.spiel.members) {
+                if (n.getName().equals(neuerSpieler.getName())) {  //ist man dem Pool bereits beigetreten?
                     return "{ Erfolg: " + false + "}";
                 }
             }
+          */
 
             if(poolAktuell.anzahlSpieler() !=2){
+                neuerSpieler.setLeben(poolAktuell.spiel.leben);
                 poolAktuell.spiel.members.add(neuerSpieler);  //Spieler dem Pool hinzufügen
                 return "{ Erfolg: " + true+ "}";
             }else{
@@ -222,16 +233,16 @@ public class RespClass {
 
         //Holt name und PoolID aus der JSON raus
         JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
-        String name = jObj.get("name").toString();
+        String name = jObj.get("name").toString();    //Nutzername auslesen
         name = name.replace("\"", "");
 
-        String poolID = jObj.get("poolID").toString();
+        String poolID = jObj.get("poolID").toString();   //PoolID auslesen
         poolID = poolID.replace("\"", "");
         int poolID2 = Integer.parseInt(poolID);
 
         //Sucht den entsprechenden Pool raus
         Pool poolAktuell = null;
-        for(Pool p : Main.poolListe) {
+        for(Pool p : Main.poolListe) {   //nach Pool in der Poolliste suchen
             if (p.id == poolID2) {
                 poolAktuell = p;
             }
@@ -273,7 +284,7 @@ public class RespClass {
 
         //Prüft ob der Pool überhaupt existiert
         if(poolAktuell==null){
-            System.err.println("Fehler beim aufruufen des Pools");
+            System.err.println("Fehler beim aufrufen des Pools");
             return "{'anfang':'false'}";
         }
 
@@ -281,8 +292,8 @@ public class RespClass {
         if(poolAktuell.spiel.members.get(0).getName().equals(name)){
 
             //TODO: anpassen, dass die Leben anhand des schwierigkeitsgrades angepasst werden.
-            poolAktuell.spiel.members.get(0).setLeben(10);
-            poolAktuell.spiel.members.get(1).setLeben(10);
+            poolAktuell.spiel.members.get(0).setLeben(poolAktuell.spiel.leben);
+            poolAktuell.spiel.members.get(1).setLeben(poolAktuell.spiel.leben);
 
             return "{'anfang':'true'}";
         }else{

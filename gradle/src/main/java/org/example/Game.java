@@ -16,7 +16,7 @@ public class Game implements IGame{
     int[] lebenNachSchwierigkeit = {20, 15, 10, 5};    //Leben, Level = Index+1
     boolean fertig; //Ist Wort erraten oder alle Leben weg? --> Spiel beendet
     int amZugIndex; //Gibt an, ob spieler 0 oder 1 am Zug ist
-    int gewinn;
+    int gewinn;   //Höchstbetrag für das Spiel
 
     public Game(int level) {
         this.schierigkeitsgrad = level;  //Schwierigkeitgrad von Spiel
@@ -24,8 +24,8 @@ public class Game implements IGame{
         this.erraten = new Character[geheimesWort.length()];  //erratenes Wort muss richtige Länge haben
         Arrays.fill(erraten,  "0".charAt(0));  //alle Felder mit "0" ausfüllen
         amZugIndex = 0;
-        gewinn = punkteNachSchwierigkeit[schierigkeitsgrad];   //maximaler Gewinn
-        leben = lebenNachSchwierigkeit[schierigkeitsgrad];
+        gewinn = punkteNachSchwierigkeit[level];   //maximaler Gewinn
+        leben = lebenNachSchwierigkeit[level];
     }
 
 
@@ -121,8 +121,6 @@ public class Game implements IGame{
         Random random = new Random();
         int zahl = random.nextInt() % Main.woerter.size();  //Zufallszahl aus Intervall von Wörterarray generieren
         zahl = Math.abs(zahl);
-        //System.out.println(Main.woerter.length);
-        //System.out.println(zahl);
         System.out.println("Das zu erratende Wort für den Pool ist: "+Main.woerter.get(zahl));
         return Main.woerter.get(zahl);   //Wort zurückgeben
     }

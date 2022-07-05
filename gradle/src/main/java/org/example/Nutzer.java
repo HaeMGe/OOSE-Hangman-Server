@@ -36,17 +36,6 @@ public class Nutzer{
     public void setLeben(int anzLeben){
         leben = anzLeben;
     }
-
-    public String buchstabeRaten(){ //wird von Client an Server gesendet
-        System.out.println("Ihr Buchstabenversuch:");
-        String c = sc.next();
-        return c;
-    }
-    public String wortRaten(){
-        System.out.println("Ihr Wortversuch:");
-        return sc.next();
-    }
-
     public String toString(){
         return this.name + " Punkte: " + this.punkte;
     }
