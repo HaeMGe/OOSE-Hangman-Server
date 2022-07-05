@@ -100,8 +100,14 @@ public class Game implements IGame{
     }
 
     public boolean rateVersuchWort(String wort, Nutzer spieler) {
-        if(geheimesWort.equals(wort))
+        if (geheimesWort.equals(wort)){
+
+            //Füllt das Array mit allen Buchstaben, damit später erkannt wird, dass das Spiel vorbei ist
+            for (int i = 0; i < wort.length(); i++) {
+                erraten[i] = wort.charAt(i);
+            }
             return true;
+            }
         else {
             spieler.leben = spieler.leben - 2; //Leben abziehen
             spieler.strafe++;  //falsches Wort erraten = Strafe
