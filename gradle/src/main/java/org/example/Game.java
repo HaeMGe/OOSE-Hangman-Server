@@ -35,6 +35,14 @@ public class Game implements IGame{
     }
 
     public boolean erraten(){
+
+        if(members.get(0).leben == 0){
+            return true;
+        }
+        if(members.get(1).leben == 0){
+            return true;
+        }
+
         for(int i = 0; i < geheimesWort.length(); i++){
             if(geheimesWort.charAt(i) != (erraten[i]))
                 return false;

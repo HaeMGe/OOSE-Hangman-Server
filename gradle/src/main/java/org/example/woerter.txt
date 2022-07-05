@@ -103,7 +103,6 @@ Buchstabe
 Bus
 Butter
 CD
-CD-ROM
 Chef
 Computer
 Creme
@@ -230,12 +229,12 @@ Glueck
 Glueckwunsch
 Glas
 Gleis
-Groeße
+Groesse
 Grenze
 Grippe
-Großeltern
-Großmutter
-Großvater
+Grosseltern
+Grossmutter
+Grossvater
 Gruß
 Grundschule
 Gruppe
@@ -449,7 +448,7 @@ Pommes
 Portion
 Post
 Postleitzahl
-Prüfung
+Pruefung
 Praktikum
 Praxis
 Preis
@@ -545,8 +544,8 @@ Stempel
 Steuer
 Stock
 Stoff
-Straße
-Straßenbahn
+Strasse
+Strassenbahn
 Strand
 Streichholz
 Strom
