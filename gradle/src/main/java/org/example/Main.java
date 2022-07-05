@@ -16,11 +16,11 @@ public class Main {
     public static ArrayList<Nutzer> warteraum = new ArrayList<>();
     //public static String[] woerter = {"Hallo", "Loesung", "Wort", "Moneymaker", "Niere", "Hangman","Schmetterling","Teppich","Regen","Tiger","Fahrrad","Dreieck","Wolke","Pinguin","Astronaut"};
 
-    public static List<String> woerter;
+    public static List<String> woerterGross,woerter;
 
     static {
         try {
-            woerter = Files.readAllLines(Paths.get("gradle/src/main/java/org/example/woerter.txt"));
+            woerterGross = Files.readAllLines(Paths.get("gradle/src/main/java/org/example/woerter.txt"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -29,6 +29,13 @@ public class Main {
     ;
 
     public static void main(String[] args) throws IOException {
+
+        woerter = new ArrayList<String>();
+
+        //Macht alle Buchstaben aus der woerterListe Klein
+        for(int i = 0;i<woerterGross.size();i++){
+            woerter.add(woerterGross.get(i).toLowerCase());
+        }
 
         post("/games/hangman/start/neuerNutzer", (q, a) -> { return RespClass.neuerNutzer(q.body());});
 
