@@ -367,6 +367,10 @@ public class RespClass {
 
 
     }
+
+    public static String gewonnen(String body) {
+        return "";
+    }
 }
 
 

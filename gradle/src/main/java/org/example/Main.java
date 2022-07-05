@@ -60,6 +60,9 @@ public class Main {
         //Abfrage , wer als erstes anfangen darf
         post("/games/hangman/start/spiel/anfang", (q,a) -> {return RespClass.anfang(q.body());});
 
+        //Abfrage, ob Client gewonnen hat oder nicht
+        post("games/hangman/start/spiel/gewonnen",(q,a)->{return RespClass.gewonnen(q.body());});
+
         //Pool loeschen, nachdem ein Spiel angefangen hat oder kein Mitspieler gefunden wurde
         post("/games/hangman/start/spiel/loeschen", (q,a) -> {return RespClass.PoolLoeschen(q.body());});
 
