@@ -237,14 +237,17 @@ public class RespClass {
             }
         }
 
-        assert poolAktuell != null;
+        if(poolAktuell == null){
+            return"{'poolVorhanden':'false'}";
+        }
+
         //Gibt zurück, ob der Nutzer am Zug ist
         boolean amZug = poolAktuell.spiel.istAmZug(name);
 
         //Gibt den Rest des StatusText zurück, ink. anzahl Leben, falsche Eingaben, richtige Eingaben, ob das Spiel vorbei ist
         String statusText = poolAktuell.spiel.spielStatus(name);
 
-        return "{'amZug':'"+amZug+"',"+statusText+"}";
+        return "{'poolVorhanden':'true','amZug':'"+amZug+"',"+statusText+"}";
     }
 
     /**
@@ -313,7 +316,10 @@ public class RespClass {
             }
         }
 
-        assert p != null;
+        if(p == null){
+            return "{'poolVorhanden':'false'}";
+        }
+
         for (Nutzer n : p.spiel.members) {
             if (n.getName().equals(nutzerName)) {
                 spieler = n;
@@ -339,7 +345,7 @@ public class RespClass {
         System.err.println(p.spiel.amZugIndex);
 
         boolean erfolg = p.spiel.rateVersuchWort(wort, spieler);
-        return "{" + erfolg + "}";
+        return "{'poolVorhanden':'true', 'rateVersuch':'" + erfolg + "'}";
     }
 
 
