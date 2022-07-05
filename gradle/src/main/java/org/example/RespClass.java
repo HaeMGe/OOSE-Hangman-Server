@@ -325,7 +325,7 @@ public class RespClass {
             return "Spieler nicht vorhanden";
         }
 
-        String wort = jObj.get("wort").toString();
+        String wort = jObj.get("zeichen").toString();
         wort = wort.replace("\"", "");
         System.out.println(wort);
 
