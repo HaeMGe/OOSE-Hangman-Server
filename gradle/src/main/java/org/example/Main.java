@@ -31,7 +31,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         woerter = new ArrayList<String>();
-
+        //TODO: umlaute eventuell ersetzen
         //Macht alle Buchstaben aus der woerterListe Klein
         for(int i = 0;i<woerterGross.size();i++){
             woerter.add(woerterGross.get(i).toLowerCase());
