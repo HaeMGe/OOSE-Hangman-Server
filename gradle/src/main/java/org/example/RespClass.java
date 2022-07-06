@@ -48,7 +48,7 @@ public class RespClass {
             System.err.println(p.spiel.amZugIndex);
 
             boolean erfolg = p.spiel.rateVersuchChar(zeichen.charAt(0), spieler);   //true, wenn Versuch richtig, sonst false
-            return "{" + erfolg + "}";
+            return "{'rateVersuch':'" + erfolg + "'}";
         }
 
 
@@ -349,7 +349,7 @@ public class RespClass {
         System.err.println(p.spiel.amZugIndex);
 
         boolean erfolg = p.spiel.rateVersuchWort(wort, spieler);
-        return "{" + erfolg + "}";
+        return "{'rateVersuch':'" + erfolg + "'}";
     }
 
 
