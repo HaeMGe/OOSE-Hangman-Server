@@ -291,7 +291,6 @@ public class RespClass {
         //Der erste Nutzer in der Liste vom Pool (der Nutzer der den pool erstellt hat im endeffekt) darf anfangen
         if(poolAktuell.spiel.members.get(0).getName().equals(name)){
 
-            //TODO: anpassen, dass die Leben anhand des schwierigkeitsgrades angepasst werden.
             poolAktuell.spiel.members.get(0).setLeben(poolAktuell.spiel.leben);
             poolAktuell.spiel.members.get(1).setLeben(poolAktuell.spiel.leben);
 
@@ -377,6 +376,10 @@ public class RespClass {
 
 
 
+    }
+
+    public static String gewonnen(String body) {
+        return"";
     }
 }
 
