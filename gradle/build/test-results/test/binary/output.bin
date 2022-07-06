@@ -1,8 +1,11 @@
-{ Erfolg: true}
-true
-é{ID: 100 Nummer in Liste: 0, Schwierigkeit: 1 Mitgliederzahl: 2ID: 42 Nummer in Liste: 1, Schwierigkeit: 1 Mitgliederzahl: 1Vorhanden: false}
-{ Erfolg: false}
-0
-{ 'neuerNutzer': 'true' }
-{ 'neuerNutzer': 'false' }
-	{true}
+{ Erfolg: true}
+true
+è{ID: 100 Nummer in Liste: 0, Schwierigkeit: 1 Mitgliederzahl: 2ID: 42 Nummer in Liste: 1, Schwierigkeit: 1 Mitgliederzahl: 1Vorhanden: false}
+{ Erfolg: false}
+0
+{ Erfolg: true}
+{true}
+{ 'neuerNutzer': 'true' }
+	{ 'neuerNutzer': 'false' }
+
+{true}

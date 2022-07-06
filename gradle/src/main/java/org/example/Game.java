@@ -12,11 +12,9 @@ public class Game implements IGame{
     Character[] erraten;  //erratene Indizes
     ArrayList<Nutzer> members = new ArrayList<>();
     int schierigkeitsgrad;
-    int[] punkteNachSchwierigkeit = {5, 10, 15, 20};   //maximaler Gewinn, Level = Index+1
     int[] lebenNachSchwierigkeit = {20, 15, 10, 5};    //Leben, Level = Index+1
     boolean fertig; //Ist Wort erraten oder alle Leben weg? --> Spiel beendet
     int amZugIndex; //Gibt an, ob spieler 0 oder 1 am Zug ist
-    int gewinn;   //Höchstbetrag für das Spiel
 
     public Game(int level) {
         this.schierigkeitsgrad = level;  //Schwierigkeitgrad von Spiel
@@ -24,7 +22,6 @@ public class Game implements IGame{
         this.erraten = new Character[geheimesWort.length()];  //erratenes Wort muss richtige Länge haben
         Arrays.fill(erraten,  "0".charAt(0));  //alle Felder mit "0" ausfüllen
         amZugIndex = 0;
-        gewinn = punkteNachSchwierigkeit[level];   //maximaler Gewinn
         leben = lebenNachSchwierigkeit[level];
     }
 
@@ -60,8 +57,10 @@ public class Game implements IGame{
 
         int leben = n.leben;
 
+        boolean poolVorhanden = true;
+
       //  }
-        return"'erraten':'"+getErraten()+"','leben':'"+leben+"','spielVorbei':'"+erraten()+"','fehlversuche':'"+getFehlversuche()+"','fehlversucheWort':'"+fehlversucheWort.toString()+"'";
+        return"'erraten':'"+getErraten()+"','leben':'"+leben+"','spielVorbei':'"+erraten()+"','fehlversuche':'"+getFehlversuche()+"','fehlversucheWort':'"+fehlversucheWort.toString()+"','poolVorhanden':'"+true;
     }
 
     public boolean istAmZug(String name){

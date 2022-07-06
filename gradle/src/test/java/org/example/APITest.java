@@ -101,4 +101,17 @@ public class APITest {
         System.out.println(antwort);
         assertTrue(antwort.contains("true"));
     }
+
+
+    @Test
+    void raten() throws IOException {
+
+      posten.doPostRequest(link + "games/hangman/start/neuerPool/", "{ 'name': '" + "TestNutzer3" + "','pool': '" + "987" + "','level': '" + 1 + "'}");
+
+
+        String antwort = posten.doPostRequest(link + "games/hangman/start/beitreten/", "{ 'name': '" + "TestNutzer2" + "','pool': '" + "987" + "'}");
+        System.out.println(antwort);
+         String antwort2 = posten.doPostRequest(link + "games/hangman/start/neuesWort/" + 0, "{ 'name': '" + "TestNutzer2" + "','pool': '" + "987" + "','zeichen': '" + 'e' + "'}");
+        System.out.println(antwort2);
+    }
 }
