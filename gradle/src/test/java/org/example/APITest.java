@@ -4,8 +4,10 @@ package org.example;
 import org.example.PostTesten.PostClass;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
+import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,16 +16,23 @@ import static org.junit.jupiter.api.Assertions.*;
  * Hier wird die API-Schnittstelle getestet.
  */
 public class APITest {
+
     static String link = "http://localhost:4567/";
     PostClass posten = new PostClass();
     // neuen Nutzer fuer ein paar Tests anlegen
     String neuerNutzerRequest = posten.doPostRequest(link + "games/hangman/start/neuerNutzer", "{ 'name': '" + "TestNutzer" + "'}");
     String neuerNutzerRequest2 = posten.doPostRequest(link + "games/hangman/start/neuerNutzer", "{ 'name': '" + "TestNutzer2" + "'}");
     String neuerNutzerRequest3 = posten.doPostRequest(link + "games/hangman/start/neuerNutzer", "{ 'name': '" + "TestNutzer3" + "'}");
+    static String args[];
 
 
     public APITest() throws IOException {
     }
+    /* @BeforeAll
+        public static void startServer() throws IOException {
+
+         Main.main(args);*/
+    // }
 
     @Test
     void neuerNutzer() throws IOException {

@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.example.APITest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-07-03T19:42:32" hostname="LAPTOP-4918OAIF" time="0.059">
+<testsuite name="org.example.APITest" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-07-06T20:14:41" hostname="Sophias-MBP.fritz.box" time="0.181">
   <properties/>
-  <testcase name="neuerPool()" classname="org.example.APITest" time="0.028"/>
-  <testcase name="nochKeinPoolda()" classname="org.example.APITest" time="0.009"/>
-  <testcase name="neuerNutzer()" classname="org.example.APITest" time="0.003"/>
-  <testcase name="neuerNutzerGleicherName()" classname="org.example.APITest" time="0.003"/>
-  <testcase name="neuerPoolGleicheId()" classname="org.example.APITest" time="0.004"/>
-  <system-out><![CDATA[true
+  <testcase name="poolbeitreten()" classname="org.example.APITest" time="0.047"/>
+  <testcase name="neuerPool()" classname="org.example.APITest" time="0.006"/>
+  <testcase name="istEinPoolda()" classname="org.example.APITest" time="0.02"/>
+  <testcase name="poolbeitreten_mindestanzahl_ueberschritten()" classname="org.example.APITest" time="0.005"/>
+  <testcase name="poolLoeschen()" classname="org.example.APITest" time="0.006"/>
+  <testcase name="neuerNutzer()" classname="org.example.APITest" time="0.004"/>
+  <testcase name="neuerNutzerGleicherName()" classname="org.example.APITest" time="0.004"/>
+  <testcase name="poolWarteraum()" classname="org.example.APITest" time="0.004"/>
+  <testcase name="neuerPoolGleicheId()" classname="org.example.APITest" time="0.006"/>
+  <system-out><![CDATA[{ Erfolg: true}
+true
+{ID: 100 Nummer in Liste: 0, Schwierigkeit: 1 Mitgliederzahl: 2ID: 42 Nummer in Liste: 1, Schwierigkeit: 1 Mitgliederzahl: 1Vorhanden: false}
+{ Erfolg: false}
+0
 { 'neuerNutzer': 'true' }
 { 'neuerNutzer': 'false' }
+{true}
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
