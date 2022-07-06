@@ -5,6 +5,11 @@ Tuhin Thodeme
 Luisa Victor
 
 Projektbeschreibung:
+Dieses Projekt wurde im Rahmen der Vorlesung "Praktikum: Objektorientierte Softwareentwicklung" der Universität Bonn erstellt.
+Es handelt sich um den Serverpart eines Spieleservers mit zugehörigem Client für das Spiel "Hangman".
+Hier werden alle Requests der Clients aufgefangen, bearbeitet und eine passende Antwort zurückgeschickt.
+Die Klasse RespClass ist hierbei vor allem für das Auslesen der Informationen aus dem Request zuständig. Anschließend wird mithilfe
+der für die Logik verantwortlichen Klassen Nutzer, Pool und Game die Information für die Antwort an den Client generiert und losgeschickt.
 
 Spielregeln:
 
@@ -15,13 +20,6 @@ Spielregeln:
    --> Level 3: 10 Leben
    --> Level 4: 5 Leben
 
-   --> ein Sieg bringt jedem Spieler Punkte:
-     --> Level 1: 5 Punkte
-     --> Level 2: 10 Punkte
-     --> Level 3: 15 Punkte
-     --> Level 4: 20 Punkte
-
-
 
 
 
@@ -30,9 +28,9 @@ Spielregeln:
 und mitspielen
   --> bei jedem Spiel wird aus einem gespeicherten Pool aus Wörtern eines zufällig ausgewählt und die Anzahl an Buchstaben den beiden Spielern mitgeteilt
   --> beide Spieler wechseln sich immer ab mit dem Erraten eines Buchstabens oder eines ganzen Wortes
-  --> der Spieler, der sein Wort errät und noch am meisten Leben hat gewinnt und kriegt die Punkte, der andere kriegt keine Punkte
-  --> wenn beide verlieren (alle Leben verbraucht) kriegt niemand Punkte
-  --> wenn man ein ganzes Wort erraten möchte und die Anwort falsch ist, werden 2 Punkte vom möglichen Gewinn abgezogen
+  --> der Spieler, der sein Wort errät und noch am meisten Leben hat gewinnt
+  --> wenn beide verlieren (alle Leben verbraucht) gewinnt niemand
+  --> wenn man ein ganzes Wort erraten möchte und die Anwort falsch werden 2 Leben abgezogen
   --> Ende des Spiels:
              - ein Spieler errät das richtige Wort und hat noch mehr als 0 Leben
              - beide Spieler erraten das Wort nicht und haben keine Leben mehr
@@ -40,13 +38,6 @@ und mitspielen
 
 Verwendete Features:
 Spark Server
-
-
-
-Paths und deren Beschreibung:
-Pfad und Funktion: 
-/games/hangman/start/neuerNutzer    -->Daten zu neuem Nutzer werden von Client an Server gesendet. Ein neuer Nutzer wird angelegt
-
 
 
 UML (noch nicht fertig)
