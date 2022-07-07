@@ -1,12 +1,14 @@
 package org.example;
 import java.util.Scanner;
 
-
+/**
+ * Jeder Spieler muss sich mit einem Nutzernamen anmelden. Dieser Name wird hier zur Instanziierung eines
+ * neuen Nutzers verwendet, sodass später wieder auf diesen Nutzer zugegriffen werden kann.
+ */
 public class Nutzer{
 
-
     static Scanner sc = new Scanner(System.in);
-    String name;
+    String name;  //Name des Nutzers
     int leben;  //Leben im aktuellen Spiel
     int strafe;  //Strafen im akutellen Spiel (falsches Wort erraten)
 

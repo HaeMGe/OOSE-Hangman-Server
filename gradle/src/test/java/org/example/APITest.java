@@ -1,6 +1,8 @@
 package org.example;
 
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.example.PostTesten.PostClass;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -97,5 +99,19 @@ public class APITest {
         String antwort = posten.doPostRequest(link + "games/hangman/start/pool/warteRaum", "{ 'poolID':" + "100" + " }");
         System.out.println(antwort);
         assertTrue(antwort.contains("true"));
+    }
+
+
+    @Test
+    void buchstabeRaten() throws IOException {
+        Pool pool = new Pool(new Nutzer("megaName"), 2, 1);
+        pool.spiel.geheimesWort = "testWort";
+        String antwort = posten.doPostRequest(link + "games/hangman/start/neuesWort/" + 0, "{ 'name': '" + "megaName" + "','pool': '" + 1 + "','zeichen': '" + 'e' + "'}");  //neuen Postrequest mit Eingabe an Server
+        JsonObject jObj = new Gson().fromJson(antwort, JsonObject.class);
+        String rateVersuch = jObj.get("rateVersuch").toString();
+        rateVersuch = rateVersuch.replace("\"", "");
+        boolean antwort2 = Boolean.parseBoolean(rateVersuch);
+        System.out.println(antwort2);
+        assertTrue(antwort2);
     }
 }
