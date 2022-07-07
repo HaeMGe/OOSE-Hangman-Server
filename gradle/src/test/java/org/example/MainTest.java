@@ -29,12 +29,18 @@ class MainTest {
 
 
     @Test
-    void richtigesWortRaten(){
+    void richtigenUndFalschenBuchstabenRaten(){
         Pool neuerPool = new Pool(testUser, 2, 12);  //neuen Pool anlegen
         neuerPool.spiel.geheimesWort = "testWort";
         assertTrue(neuerPool.spiel.rateVersuchChar('e', testUser));  //Buchstabe drin
         assertFalse(neuerPool.spiel.rateVersuchChar('l', testUser)); //Buchstabe nicht drin
+    }
 
-
+    @Test
+    void richtigesUndFalschesWortRaten(){
+        Pool neuerPool = new Pool(testUser, 2, 12);  //neuen Pool anlegen
+        neuerPool.spiel.geheimesWort = "testWort";
+        assertTrue(neuerPool.spiel.rateVersuchWort("testWort", testUser));  //Buchstabe drin
+        assertFalse(neuerPool.spiel.rateVersuchWort("testWortFalsch", testUser)); //Buchstabe nicht drin
     }
 }
