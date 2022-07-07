@@ -21,7 +21,6 @@ build:
 test:
   stage: test
   script:
-    - gradle run
     - gradle test
   cache:
     key: "$CI_COMMIT_REF_NAME"
