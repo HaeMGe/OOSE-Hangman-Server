@@ -89,7 +89,7 @@ public class Main {
         });
 
 
-        Scanner sc = new Scanner(System.in);
+        /*Scanner sc = new Scanner(System.in);
         while (true) {
             String eingabe = sc.next();
 
@@ -99,5 +99,6 @@ public class Main {
                 break;
             }
         }
+    }*/
     }
 }
