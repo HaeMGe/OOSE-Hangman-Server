@@ -29,7 +29,6 @@ public class Main {
     ;
 
     public static void main(String[] args) throws IOException {
-        // woerterGross = Files.readAllLines(Paths.get("/woerter.txt"));
 
         woerter = new ArrayList<String>();
         //Macht alle Buchstaben aus der woerterListe Klein
