@@ -60,7 +60,7 @@ public class Game implements IGame{
         boolean poolVorhanden = true;
 
       //  }
-        return"'erraten':'"+getErraten()+"','leben':'"+leben+"','spielVorbei':'"+erraten()+"','fehlversuche':'"+getFehlversuche()+"','fehlversucheWort':'"+fehlversucheWort.toString()+"','poolVorhanden':'"+true;
+        return"'erraten':'"+getErraten()+"','leben':'"+leben+"','spielVorbei':'"+erraten()+"','fehlversuche':'"+getFehlversuche()+"','fehlversucheWort':'"+fehlversucheWort.toString()+"','poolVorhanden':'"+true+"'";
     }
 
     public boolean istAmZug(String name){
