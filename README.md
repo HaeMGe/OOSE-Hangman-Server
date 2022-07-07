@@ -39,8 +39,8 @@ und mitspielen
 Verwendete Features:
 Spark Server
 
-![](gradle/Bildschirmfoto 2022-07-07 um 13.34.13.png)
-![](gradle/Bildschirmfoto 2022-07-07 um 13.34.40.png)
+![gradle/Bildschirmfoto 2022-07-07 um 13.34.13.png](gradle/Bildschirmfoto 2022-07-07 um 13.34.13.png)
+![gradle/Bildschirmfoto 2022-07-07 um 13.34.40.png](gradle/Bildschirmfoto 2022-07-07 um 13.34.40.png)
 
 
 UML (noch nicht fertig)
