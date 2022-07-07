@@ -114,4 +114,41 @@ public class APITest {
         System.out.println(antwort2);
         assertTrue(antwort2);
     }
+
+    @Test
+    void buchstabeRatenAberFalsch() throws IOException {
+        String antwort = posten.doPostRequest(link + "games/hangman/start/neuesWort/" + 0, "{ 'name': '" + "megaName" + "','pool': '" + 1 + "','zeichen': '" + 'x' + "'}");  //neuen Postrequest mit Eingabe an Server
+        JsonObject jObj = new Gson().fromJson(antwort, JsonObject.class);
+        String rateVersuch = jObj.get("rateVersuch").toString();
+        rateVersuch = rateVersuch.replace("\"", "");
+        boolean antwort2 = Boolean.parseBoolean(rateVersuch);
+        System.out.println(antwort2);
+        assertFalse(antwort2);
+    }
+
+    @Test
+    void wortRaten() throws IOException {
+        Pool pool = new Pool(new Nutzer("megaName"), 2, 1);
+        pool.spiel.geheimesWort = "testWort";
+        String antwort = posten.doPostRequest(link + "games/hangman/start/neuesWort/" + 1, "{ 'name': '" + "megaName" + "','pool': '" + 1 + "','zeichen': '" + "testWort" + "'}");  //neuen Postrequest mit Eingabe an Server
+        JsonObject jObj = new Gson().fromJson(antwort, JsonObject.class);
+        String rateVersuch = jObj.get("rateVersuch").toString();
+        rateVersuch = rateVersuch.replace("\"", "");
+        boolean antwort2 = Boolean.parseBoolean(rateVersuch);
+        System.out.println(antwort2);
+        assertTrue(antwort2);
+    }
+
+    @Test
+    void wortRatenaberFalsch() throws IOException {
+        Pool pool = new Pool(new Nutzer("megaName"), 2, 1);
+        pool.spiel.geheimesWort = "testWort";
+        String antwort = posten.doPostRequest(link + "games/hangman/start/neuesWort/" + 1, "{ 'name': '" + "megaName" + "','pool': '" + 1 + "','zeichen': '" + "testfalsch" + "'}");  //neuen Postrequest mit Eingabe an Server
+        JsonObject jObj = new Gson().fromJson(antwort, JsonObject.class);
+        String rateVersuch = jObj.get("rateVersuch").toString();
+        rateVersuch = rateVersuch.replace("\"", "");
+        boolean antwort2 = Boolean.parseBoolean(rateVersuch);
+        System.out.println(antwort2);
+        assertFalse(antwort2);
+    }
 }
