@@ -7,7 +7,6 @@ import org.junit.BeforeClass;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
-import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.*;
  * Hier wird die API-Schnittstelle getestet.
  */
 public class APITest {
-
     static String link = "http://localhost:4567/";
     PostClass posten = new PostClass();
     // neuen Nutzer fuer ein paar Tests anlegen
@@ -28,11 +26,10 @@ public class APITest {
 
     public APITest() throws IOException {
     }
-    /* @BeforeAll
+     @BeforeAll
         public static void startServer() throws IOException {
-
-         Main.main(args);*/
-    // }
+         Main.main(args);
+     }
 
     @Test
     void neuerNutzer() throws IOException {
@@ -100,18 +97,5 @@ public class APITest {
         String antwort = posten.doPostRequest(link + "games/hangman/start/pool/warteRaum", "{ 'poolID':" + "100" + " }");
         System.out.println(antwort);
         assertTrue(antwort.contains("true"));
-    }
-
-
-    @Test
-    void raten() throws IOException {
-
-      posten.doPostRequest(link + "games/hangman/start/neuerPool/", "{ 'name': '" + "TestNutzer3" + "','pool': '" + "987" + "','level': '" + 1 + "'}");
-
-
-        String antwort = posten.doPostRequest(link + "games/hangman/start/beitreten/", "{ 'name': '" + "TestNutzer2" + "','pool': '" + "987" + "'}");
-        System.out.println(antwort);
-         String antwort2 = posten.doPostRequest(link + "games/hangman/start/neuesWort/" + 0, "{ 'name': '" + "TestNutzer2" + "','pool': '" + "987" + "','zeichen': '" + 'e' + "'}");
-        System.out.println(antwort2);
     }
 }
