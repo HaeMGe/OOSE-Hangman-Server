@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 public class RespClass {
+
     /**
      * Ein Buchstabe wird vom CLient eingegeben und an den Server geschickt. Hier wird überprüft, ob der Rateversuch korrekt ist.
      * @param body geratener Buchstabe, Name und Pool des Nutzers bzw Spieles
@@ -11,7 +12,8 @@ public class RespClass {
      */
     public static String buchstabeRaten(String body) {
         Nutzer spieler = null;
-        System.out.println(body);
+        //System.out.println(body);
+
         JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
         String nutzerName = jObj.get("name").toString();   //Name der ratenden Person
         nutzerName = nutzerName.replace("\"", "");
@@ -22,7 +24,6 @@ public class RespClass {
         int poolID = Integer.parseInt(poolString);   //Pool ID von String zu Integer parsen
 
         Pool p = null;
-
         for (Pool l : Main.poolListe) {  //Pool aus der Poolliste finden
             if (l.id == poolID) {
                 p = l;
@@ -248,7 +249,9 @@ public class RespClass {
             }
         }
 
-        assert poolAktuell != null;
+       if(poolAktuell == null){
+           return"{'amZug':'false','erraten':'','leben':'0','spielVorbei':'true','fehlversuche':'','fehlversucheWort':'','poolVorhanden':'false'}";
+       }
         //Gibt zurück, ob der Nutzer am Zug ist
         boolean amZug = poolAktuell.spiel.istAmZug(name);
 
@@ -379,7 +382,87 @@ public class RespClass {
     }
 
     public static String gewonnen(String body) {
-        return"";
+
+        Nutzer spieler = null;
+        System.out.println(body);
+
+        JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
+        String nutzerName = jObj.get("name").toString();
+        nutzerName = nutzerName.replace("\"", "");
+
+        String poolString = jObj.get("pool").toString();
+        poolString = poolString.replace("\"", "");
+
+        int poolID = Integer.parseInt(poolString);
+
+        Pool p = null;
+
+        for (Pool l : Main.poolListe) {
+            if (l.id == poolID) {
+                p = l;
+            }
+        }
+
+        assert p != null;
+        for (Nutzer n : p.spiel.members) {
+            if (n.getName().equals(nutzerName)) {
+                spieler = n;
+            }
+        }
+
+        if(spieler ==null){
+            System.err.println("Spieler nicht vorhanden");
+            return "Spieler nicht vorhanden";
+        }
+
+        if (p.spiel.amZugIndex == 1) {
+            p.spiel.amZugIndex = 0;
+        } else {
+            p.spiel.amZugIndex = 1;
+        }
+
+        if(p.spiel.members.get(0).leben == 0 && p.spiel.members.get(0).getName().equals(nutzerName)){
+            return"{'gewonnen':'false'}";
+        }
+        if(p.spiel.members.get(0).leben == 0 && !(p.spiel.members.get(0).getName().equals(nutzerName))){
+            return"{'gewonnen':'true'}";
+        }
+        if(p.spiel.members.get(1).leben == 0 && p.spiel.members.get(1).getName().equals(nutzerName)){
+            return"{'gewonnen':'false'}";
+        }
+        if(p.spiel.members.get(1).leben == 0 && !(p.spiel.members.get(1).getName().equals(nutzerName))){
+            return"{'gewonnen':'true'}";
+        }
+
+        boolean geraten = true;
+
+        for(int i = 0;i<p.spiel.geheimesWort.length();i++){
+
+            if(p.spiel.geheimesWort.charAt(i) == p.spiel.erraten[i]){
+
+            }else{
+                geraten = false;
+            }
+
+        }
+
+        if(geraten){
+            if (p.spiel.amZugIndex == 0) {
+                if(p.spiel.members.get(0).getName().equals(nutzerName)){
+                    return"{'gewonnen':'true'}";
+                }else{
+                    return"{'gewonnen':'false;'}";
+                }
+            }else{
+                if(p.spiel.members.get(1).getName().equals(nutzerName)){
+                    return"{'gewonnen':'true'}";
+                }else{
+                    return"{'gewonnen':'false;'}";
+                }
+            }
+        }
+
+        return"{'gewonnen':'false'}";
     }
 }
 
