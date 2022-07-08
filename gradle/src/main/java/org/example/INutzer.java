@@ -8,37 +8,13 @@ public interface INutzer {
      * @return Name als String
      */
     public String getName();
-    /**
-     * Gibt Nutzerpasswort zurück
-     * @return Passwort als String
-     */
-    public String getPasswort();
-    /**
-     * Gibt Punktescore zurück
-     * @return erspielte Punkte insgesamt
-     */
-    public int getPunktestand();
-
-    /**
-     * Neuen Punktestand aktualisieren
-     * @param neuerWert neuer Punktestand
-     */
-    public void setPunktestand(int neuerWert);
 
 
     /**
-     * Ein Spiel beginnen, wenn Gegner gefunden
-     * @return String, der für die Client-Server-Kommunikation wichtig ist
+     * Die Leben, die man je nach Level als Spieler besitzt neu setzen.
+     * @param anzLeben Anzahl der Leben in Abhängigkeit vom Schwierigkeitsgrad
      */
-    public String start(int schwierigkeit);
-
-    /**
-     * Interne Implementierung von start()
-     * @param counter Zähler, wie lange auf Mitspieler gewartet werden soll
-     * @return Meldung, ob Spielpartner gefunden wurde
-     */
-    private String start(int counter, int schwierigkeit){return null;}
-
+    public void setLeben(int anzLeben);
 
     /**
      * Nutzer mit seinem Namen und Punkten als String ausgeben

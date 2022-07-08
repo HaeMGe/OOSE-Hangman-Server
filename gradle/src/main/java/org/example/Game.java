@@ -13,7 +13,6 @@ public class Game implements IGame{
     ArrayList<Nutzer> members = new ArrayList<>();
     int schierigkeitsgrad;
     int[] lebenNachSchwierigkeit = {20, 15, 10, 5};    //Leben, Level = Index+1
-    boolean fertig; //Ist Wort erraten oder alle Leben weg? --> Spiel beendet
     int amZugIndex; //Gibt an, ob spieler 0 oder 1 am Zug ist
 
     public Game(int level) {

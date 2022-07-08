@@ -52,6 +52,24 @@ public interface IGame {
      */
     public String toString();
 
+
+    /**
+     * Gibt das aktuelle Szenario im Spiel zurück. Insbesondere Informationen über den bisher erratenen Teilstring und
+     * die falschen Rateversuche.
+     * @param name Name des Nutzer, an den die aktuellen Information gesendet werden sollen
+     * @return Informationen über das Spiel als String
+     */
+    public String spielStatus(String name);
+
+
+    /**
+     * Gibt Auskunft darüber, ob der übergebene Nutzer gerade an der Reihe ist oder nicht.
+     * @param name Name des betreffenden Spielers
+     * @return true = der Spieler ist jetzt an der Reihe, false = der Gegner ist an der Reihe
+     */
+    public boolean istAmZug(String name);
+
+
 }
 
 
