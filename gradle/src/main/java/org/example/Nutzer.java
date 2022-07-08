@@ -24,7 +24,6 @@ public class Nutzer{
         return name;
     }
 
-
     public void setLeben(int anzLeben){
         leben = anzLeben;
     }
