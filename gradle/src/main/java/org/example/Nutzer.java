@@ -5,7 +5,7 @@ import java.util.Scanner;
  * Jeder Spieler muss sich mit einem Nutzernamen anmelden. Dieser Name wird hier zur Instanziierung eines
  * neuen Nutzers verwendet, sodass später wieder auf diesen Nutzer zugegriffen werden kann.
  */
-public class Nutzer{
+public class Nutzer implements INutzer{
 
     static Scanner sc = new Scanner(System.in);
     String name;  //Name des Nutzers
@@ -23,7 +23,6 @@ public class Nutzer{
     public String getName() {
         return name;
     }
-
 
     public void setLeben(int anzLeben){
         leben = anzLeben;
