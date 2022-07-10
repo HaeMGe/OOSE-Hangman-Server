@@ -304,7 +304,11 @@ public class RespClass {
     }
 
 
-
+    /**
+     * Methode, welche aufgerufen wird, falls der Spieler direkt ein Wort raten will
+     * @param body Name des Spielers, PoolID und das Wort das der Spieler geraten hat
+     * @return Gibt boolean zurück, ob das Wort richtig geraten wurde oder nicht
+     */
     public static String wortRaten(String body) {
         Nutzer spieler = null;
         System.out.println(body);
@@ -320,6 +324,7 @@ public class RespClass {
 
         Pool p = null;
 
+        //Prüft, ob der pool existiert
         for (Pool l : Main.poolListe) {
             if (l.id == poolID) {
                 p = l;
@@ -333,16 +338,18 @@ public class RespClass {
             }
         }
 
+        //Prüft ob der Spieler existiert
         if(spieler ==null){
             System.err.println("Spieler nicht vorhanden");
             return "Spieler nicht vorhanden";
         }
 
+        //Holt das zu prüfende Wort aus der JSON
         String wort = jObj.get("zeichen").toString();
         wort = wort.replace("\"", "");
         System.out.println(wort);
 
-
+        //Ändert den Zustand des Spiels, sodass der anderer Spieler nun dran ist
         if (p.spiel.amZugIndex == 1) {
             p.spiel.amZugIndex = 0;
         } else {
@@ -351,11 +358,18 @@ public class RespClass {
 
         System.err.println(p.spiel.amZugIndex);
 
+        //Boolean, ob das Wort richtig geraten wurde oder nicht
         boolean erfolg = p.spiel.rateVersuchWort(wort, spieler);
+
         return "{'rateVersuch':'" + erfolg + "'}";
     }
 
 
+    /**
+     * Löscht den Pool des angegebenen Pools
+     * @param body PoolID des zu löschenden Pools
+     * @return Gibt zurück, ob der Pool gelöscht wurde oder nicht
+     */
     public static int PoolLoeschen(String body){
         JsonObject jObj = new Gson().fromJson(body, JsonObject.class);
         String poolString = jObj.get("poolID").toString();    //PoolID auslesen
@@ -374,13 +388,14 @@ public class RespClass {
         }
         System.out.println("nichtgeloescht");
         return -1;
-
-
-
-
-
     }
 
+    /**
+     * Gibt zurück, ob der Spieler gewonnen hat oder nicht
+     * ---Wird nicht benutzt---
+     * @param body Name des Spielers und des Pools
+     * @return Gibt boolean zurück, ob der Spieler gewonnen hat
+     */
     public static String gewonnen(String body) {
 
         Nutzer spieler = null;
