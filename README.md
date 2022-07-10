@@ -45,6 +45,8 @@ Spark Server
 UML Diagram Server:
 ![gradle/example.png](gradle/example.png)
 
+![image.png](./image.png)
+
 
 
 UMl-Diagramm
